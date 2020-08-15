@@ -14,6 +14,11 @@
     <PackageReference Include="Microsoft.NETCore.App" Version="2.2.8" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibrary1\ClassLibrary1.csproj" />
+    <ProjectReference Include="..\ConsoleApp9\ConsoleApp9.csproj" />
+  </ItemGroup>
+
 
 
 </Project>
