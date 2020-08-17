@@ -10,21 +10,27 @@ namespace ClassLibrary1.Models
         public int userID { get; set; }
 
         public Uloga Uloga { get; set; }
-        [Required]
-        public int UlogaID { get; set; }
+        
+        public int? UlogaID { get; set; }
 
         [Required(AllowEmptyStrings = false)]
+        [MaxLength(64)]
         public string ime { get; set; }
        
         [Required(AllowEmptyStrings = false)]
+        [MaxLength(64)]
         public string prezime { get; set; }
        
         [Required(AllowEmptyStrings = false)]
+        [MaxLength(64)]
         public string email { get; set; }
 
         [Required(AllowEmptyStrings =false)]
+        [MaxLength(20)]
         public string brojTelefona { get; set; }
 
+        [Required(AllowEmptyStrings = false)]
+        [MaxLength(64)]
         public string adresaStanovanja { get; set; }
     }
 }

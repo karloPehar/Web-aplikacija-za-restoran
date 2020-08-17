@@ -13,9 +13,9 @@ namespace ClassLibrary1.Models
         public byte[] slika { get; set; }
         [Required]
         public DateTime datumPostavljanja { get; set; }
-        public User Zaposlenik { get; set; }
-        [Required]
-        public int userID { get; set; }
+        public User User { get; set; }
+       
+        public int? UserID { get; set; }
         [Required]
         public string lokacijaSlike { get; set; }
 

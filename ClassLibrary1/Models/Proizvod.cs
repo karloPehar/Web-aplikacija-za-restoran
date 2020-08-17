@@ -9,24 +9,24 @@ namespace ClassLibrary1.Models
     {
         public int ProizvodID { get; set; }
 
-        public Slika slika { get; set; }
-        public int slikaID { get; set; }
+        public Slika Slika { get; set; }
+        public int? SlikaID { get; set; }
         [Required]
-        [MaxLength(30)]
+        [MaxLength(64)]
         public string Naziv { get; set; }
         [Required]
-        [MaxLength(100)]
+        [MaxLength(256)]
         public string Opis { get; set; }
 
         public double Cijena { get; set; }
-
+        
         public TipProizvoda TipProizvoda { get; set; }
-        public int TipProizvodaID { get; set; }
+        public int? TipProizvodaID { get; set; }
 
 
-        public User user { get; set; }
+        public User User { get; set; }
 
-        public int userID { get; set; }
+        public int? UserID { get; set; }
 
        
 

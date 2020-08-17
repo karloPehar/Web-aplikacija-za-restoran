@@ -1,6 +1,10 @@
 ﻿
+@using ClassLibrary1.Models;
+
+
 @{
     ViewData["Title"] = "Home Page";
+
 
 }
 <!DOCTYPE html>
@@ -20,7 +24,7 @@
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active"><a href="#section-home" class="nav-link">Home</a></li>
-                    <!-- <li class="nav-item"><a href="#section-about" class="nav-link">About</a></li> -->
+                    
                     <li class="nav-item"><a href="#section-offer" class="nav-link">Offer</a></li>
                     <li class="nav-item"><a href="#section-menu" class="nav-link">Menu</a></li>
                     <li class="nav-item"><a href="#section-news" class="nav-link">News</a></li>
@@ -65,20 +69,33 @@
                 </div>
                 <div class="col-md-12">
                     <div class="owl-carousel ftco-owl">
+                        @{
 
-                        <div class="item">
-                            <div class="media d-block mb-4 text-center ftco-media ftco-animate border-0">
-                                <img src="images/offer_1.jpg" alt="Free Template by Free-Template.co" class="img-fluid">
-                                <div class="media-body p-md-5 p-4">
-                                    <h5 class="text-primary">39.50 KM</h5>
-                                    <h5 class="mt-0 h4">Beef with Sauce</h5>
-                                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+                            @*mojDbContext novi = new mojDbContext();
 
-                                    <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">Order Now!</a></p>
+
+                            foreach (Proizvod proizvod in novi.Proizvod)
+                            {
+                                //string lokacija = "~/images/"/* + proizvod.slika.lokacijaSlike*/;
+                                //string lokacija = @proizvod.slika.lokacijaSlike/* + proizvod.slika.lokacijaSlike*/;
+                                <div class="item">
+                                    <div class="media d-block mb-4 text-center ftco-media ftco-animate border-0">
+                                        <img src="~/images/@proizvod.slika.lokacijaSlike"  alt="Free Template by Free-Template.co" class="img-fluid">
+                                        <div class="media-body p-md-5 p-4">
+                                            <h5 class="text-primary">@proizvod.Cijena KM</h5>
+                                            <h5 class="mt-0 h4">@proizvod.Naziv</h5>
+                                            <p class="mb-4">@proizvod.Opis</p>
+
+                                            <p class="mb-0"><a href="#" class="btn btn-primary btn-sm">Order Now!</a></p>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            }
+                            novi.Dispose();*@
+                            
+                        }
 
+                       
 
 
                     </div>

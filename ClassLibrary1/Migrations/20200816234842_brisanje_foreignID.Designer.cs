@@ -4,14 +4,16 @@ using ClassLibrary1.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ClassLibrary1.Migrations
 {
     [DbContext(typeof(mojDbContext))]
-    partial class mojDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200816234842_brisanje_foreignID")]
+    partial class brisanje_foreignID
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,7 +41,7 @@ namespace ClassLibrary1.Migrations
 
                     b.Property<int?>("TipProizvodaID");
 
-                    b.Property<int?>("UserID");
+                    b.Property<int?>("userID");
 
                     b.HasKey("ProizvodID");
 
@@ -47,7 +49,7 @@ namespace ClassLibrary1.Migrations
 
                     b.HasIndex("TipProizvodaID");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("userID");
 
                     b.ToTable("Proizvod");
                 });
@@ -58,8 +60,6 @@ namespace ClassLibrary1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("UserID");
-
                     b.Property<DateTime>("datumPostavljanja");
 
                     b.Property<string>("lokacijaSlike")
@@ -67,9 +67,11 @@ namespace ClassLibrary1.Migrations
 
                     b.Property<byte[]>("slika");
 
+                    b.Property<int?>("userID");
+
                     b.HasKey("SlikaID");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("userID");
 
                     b.ToTable("Slika");
                 });
@@ -109,8 +111,6 @@ namespace ClassLibrary1.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("UlogaID");
-
                     b.Property<string>("adresaStanovanja")
                         .IsRequired()
                         .HasMaxLength(64);
@@ -131,9 +131,11 @@ namespace ClassLibrary1.Migrations
                         .IsRequired()
                         .HasMaxLength(64);
 
+                    b.Property<int?>("ulogaID");
+
                     b.HasKey("userID");
 
-                    b.HasIndex("UlogaID");
+                    b.HasIndex("ulogaID");
 
                     b.ToTable("User");
                 });
@@ -150,21 +152,21 @@ namespace ClassLibrary1.Migrations
 
                     b.HasOne("ClassLibrary1.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserID");
+                        .HasForeignKey("userID");
                 });
 
             modelBuilder.Entity("ClassLibrary1.Models.Slika", b =>
                 {
                     b.HasOne("ClassLibrary1.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserID");
+                        .HasForeignKey("userID");
                 });
 
             modelBuilder.Entity("ClassLibrary1.Models.User", b =>
                 {
                     b.HasOne("ClassLibrary1.Models.Uloga", "Uloga")
                         .WithMany()
-                        .HasForeignKey("UlogaID");
+                        .HasForeignKey("ulogaID");
                 });
 #pragma warning restore 612, 618
         }
