@@ -32,5 +32,25 @@ namespace WebApplication1.Controllers
 
             return View();
         }
+
+        public int brojacObavijesti()
+        {
+
+            mojDbContext db = new mojDbContext();
+            int br=0;
+            br = db.Obavijest.Select(o => o.ObavijestID).Count();
+
+
+
+            db.Dispose();
+
+            return br;
+
+            
+
+        }
     }
+
+
+   
 }
