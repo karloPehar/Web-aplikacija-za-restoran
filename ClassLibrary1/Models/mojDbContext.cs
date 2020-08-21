@@ -19,7 +19,7 @@ namespace ClassLibrary1.Models
         public DbSet<User> User { get; set; }
 
        
-
+        public DbSet<Obavijest> Obavijest { get; set; }
 
 
 
