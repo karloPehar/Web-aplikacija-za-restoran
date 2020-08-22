@@ -7,7 +7,7 @@ using WebApplication1.Controllers;
 namespace UnitTest
 {
     [TestClass]
-    class GalerijaControllerTest
+    public class GalerijaControllerTest
     {
 
         [TestMethod]
@@ -17,6 +17,12 @@ namespace UnitTest
             Assert.IsNotNull(test.Slike());
         }
 
+        [TestMethod]
+        public void Obavijesti_View_Broj_Razlicit_Od_0()
+        {
+            ObavijestController test = new ObavijestController();
+            Assert.AreNotEqual(0, new ObavijestController().brojacObavijesti());
 
+        }
     }
 }
