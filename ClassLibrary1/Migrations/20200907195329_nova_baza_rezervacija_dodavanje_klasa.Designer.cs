@@ -4,14 +4,16 @@ using ClassLibrary1.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ClassLibrary1.Migrations
 {
     [DbContext(typeof(mojDbContext))]
-    partial class mojDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200907195329_nova_baza_rezervacija_dodavanje_klasa")]
+    partial class nova_baza_rezervacija_dodavanje_klasa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -202,15 +204,15 @@ namespace ClassLibrary1.Migrations
 
                     b.Property<bool>("Dostupan");
 
-                    b.Property<int?>("KapacitetStolaID");
-
                     b.Property<int?>("PoslovnicaID");
+
+                    b.Property<int?>("TipProizvodaID");
 
                     b.HasKey("StolID");
 
-                    b.HasIndex("KapacitetStolaID");
-
                     b.HasIndex("PoslovnicaID");
+
+                    b.HasIndex("TipProizvodaID");
 
                     b.ToTable("Stol");
                 });
@@ -354,13 +356,13 @@ namespace ClassLibrary1.Migrations
 
             modelBuilder.Entity("ClassLibrary1.Models.Stol", b =>
                 {
-                    b.HasOne("ClassLibrary1.Models.KapacitetStola", "KapacitetStola")
-                        .WithMany()
-                        .HasForeignKey("KapacitetStolaID");
-
                     b.HasOne("ClassLibrary1.Models.Poslovnica", "Poslovnica")
                         .WithMany()
                         .HasForeignKey("PoslovnicaID");
+
+                    b.HasOne("ClassLibrary1.Models.TipProizvoda", "TipProizvoda")
+                        .WithMany()
+                        .HasForeignKey("TipProizvodaID");
                 });
 
             modelBuilder.Entity("ClassLibrary1.Models.User", b =>

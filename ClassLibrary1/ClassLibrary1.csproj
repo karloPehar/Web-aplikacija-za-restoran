@@ -5,6 +5,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200907030917_rezervacija_dodavanje_entity_klasa.cs" />
+    <Compile Remove="Migrations\20200907030917_rezervacija_dodavanje_entity_klasa.Designer.cs" />
+    <Compile Remove="Migrations\20200907181129_rezervacija_dodavanje_klasa.cs" />
+    <Compile Remove="Migrations\20200907181129_rezervacija_dodavanje_klasa.Designer.cs" />
+    <Compile Remove="Migrations\20200907184032_rezervacija_klase.cs" />
+    <Compile Remove="Migrations\20200907184032_rezervacija_klase.Designer.cs" />
+    <Compile Remove="Migrations\20200907184932_rezervacija-dodavanje-klasa.cs" />
+    <Compile Remove="Migrations\20200907184932_rezervacija-dodavanje-klasa.Designer.cs" />
+    <Compile Remove="Migrations\20200907185958_Rezervacija-klase.cs" />
+    <Compile Remove="Migrations\20200907185958_Rezervacija-klase.Designer.cs" />
+    <Compile Remove="Migrations\20200907190620_rezervacija.cs" />
+    <Compile Remove="Migrations\20200907190620_rezervacija.Designer.cs" />
+    <Compile Remove="Migrations\20200907191359_rezervacija-dodavanje-klasa.cs" />
+    <Compile Remove="Migrations\20200907191359_rezervacija-dodavanje-klasa.Designer.cs" />
+    <Compile Remove="Migrations\20200907192803_rezervacija-klase.cs" />
+    <Compile Remove="Migrations\20200907192803_rezervacija-klase.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.2.6">

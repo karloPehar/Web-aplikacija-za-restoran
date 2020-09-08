@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ClassLibrary1.Models
 {
     public class User
     {
-        public int userID { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int UserID { get; set; }
 
         public Uloga Uloga { get; set; }
         
