@@ -276,6 +276,103 @@ h1, h2, h3, h4, h5,
       border-color: #fff;
       color: #000; }
 
+
+.btn {
+  border-radius: 4px;
+  cursor: pointer;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 16px;
+  font-family: "Playfair Display", serif; }
+  .btn.btn-lg {
+    font-size: 16px !important;
+    padding: 13px 40px !important; }
+  .btn.btn-sm {
+    padding: 10px 20px;
+    font-size: 12px; }
+  .btn.btn-primary {
+    border-radius: 0px; }
+  .btn.btn-secondary {
+    border: 2px solid #ccc;
+    background: none;
+    border-radius: 0px;
+    color: #999999; }
+    .btn.btn-secondary:hover {
+      background: #F96D00;
+      border-color: #F96D00;
+      color: #fff; }
+  .btn:before {
+    display: none; }
+  .btn:hover, .btn:active, .btn:focus {
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none; }
+  .btn.btn-primary {
+    background: #F96D00;
+    border-color: #F96D00;
+    color: #fff; }
+    .btn.btn-primary:hover, .btn.btn-primary:focus, .btn.btn-primary:active {
+      border-color: #c65700;
+      background: #c65700; }
+  .btn.btn-outline-white {
+    border-color: rgba(255, 255, 255, 0.8);
+    background: none;
+    border-radius: 0px;
+    border-width: 2px; }
+    .btn.btn-outline-white:hover, .btn.btn-outline-white:focus, .btn.btn-outline-white:active {
+      background: #fff;
+      border-color: #fff;
+      color: #000; }
+.btn {
+  border-radius: 4px;
+  cursor: pointer;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 16px;
+  font-family: "Playfair Display", serif; }
+  .btn.btn-lg {
+    font-size: 16px !important;
+    padding: 13px 40px !important; }
+  .btn.btn-sm {
+    padding: 10px 20px;
+    font-size: 12px; }
+  .btn.btn-primary {
+    border-radius: 0px; }
+  .btn.btn-secondary {
+    border: 2px solid #ccc;
+    background: none;
+    border-radius: 0px;
+    color: #999999; }
+    .btn.btn-secondary:hover {
+      background: #F96D00;
+      border-color: #F96D00;
+      color: #fff; }
+  .btn:before {
+    display: none; }
+  .btn:hover, .btn:active, .btn:focus {
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none; }
+  .btn.btn-primary {
+    background: #F96D00;
+    border-color: #F96D00;
+    color: #fff; }
+    .btn.btn-primary:hover, .btn.btn-primary:focus, .btn.btn-primary:active {
+      border-color: #c65700;
+      background: #c65700; }
+  .btn.btn-outline-white {
+    border-color: rgba(255, 255, 255, 0.8);
+    background: none;
+    border-radius: 0px;
+    border-width: 2px; }
+    .btn.btn-outline-white:hover, .btn.btn-outline-white:focus, .btn.btn-outline-white:active {
+      background: #fff;
+      border-color: #fff;
+      color: #000; }
+
+
+
+
 .form-control {
   border: 2px solid rgba(0, 0, 0, 0.2);
   height: 55px !important;
@@ -662,6 +759,10 @@ textarea.form-control {
   -webkit-animation: loader-dash 1.5s ease-in-out infinite;
   animation: loader-dash 1.5s ease-in-out infinite;
   stroke-linecap: round; }
+
+
+
+
 
 @-webkit-keyframes loader-rotate {
   100% {

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
-
 
 namespace ClassLibrary1.ViewModels
 {
@@ -42,15 +42,22 @@ namespace ClassLibrary1.ViewModels
         [MaxLength(512)]
         public string Napomena { get; set; }
 
+        [Required]
+        public int TerminRezervacijeID { get; set; }
 
         [Required(ErrorMessage = "Polje je obavezno.")]
-        public List<TerminRezervacijeVM> TerminRezervacije { get; set; }
+        public List<SelectListItem> TerminRezervacije { get; set; }
+
+        [Required]
+        public int brojOsobaID { get; set; }
 
         [Required(ErrorMessage = "Polje je obavezno.")]
-        public List<BrojOsobaVM> brojOsoba { get; set; }
+        public List<SelectListItem> brojOsoba { get; set; }
 
+        [Required]
+        public int PoslovnicaID { get; set; }
         [Required(ErrorMessage = "Polje je obavezno.")]
-        public List<PoslovnicaVM> poslovnica { get; set; }
+        public List<SelectListItem> poslovnice { get; set; }
 
     }
 }
