@@ -8,29 +8,32 @@ namespace ClassLibrary1.ViewModels
 {
     public class RezervacijaVM
     {
-        public int  RezervacijaID {get;set;}
+       
+        public int RezervacijaID { get; set; }
 
         [Required(ErrorMessage = "Polje je obavezno.")]
         [MaxLength(32)]
-        [RegularExpression("^[a - zA - Z] *$")]
+        [RegularExpression(@"^[a-zA-Z]*$")]
         public string Ime { get; set; }
 
         [Required(ErrorMessage = "Polje je obavezno.")]
         [MaxLength(32)]
-        [RegularExpression("^[a - zA - Z] *$")]
+        [RegularExpression(@"^[a-zA-Z]*$")]
         public string Prezime { get; set; }
-        
+
         [Required(ErrorMessage = "Polje je obavezno.")]
         [MaxLength(12)]
-        [RegularExpression("[0-9]{9}")]
+        [RegularExpression(@"[0-9]{9}")]
         public string BrojTelefona { get; set; }
-        
-        [Required(ErrorMessage = "Polje je obavezno.")]
-        [MaxLength(128)]
-        [RegularExpression(@"^[a-z0-9][-a-z0-9.!#$%&'*+-=?^_`{|}~\/]+@([-a-z0-9]+\.)+[a-z]{2,5}$")]
+
+
+        [StringLength(320)]
+        [RegularExpression(@"^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$", ErrorMessage = "unešeni tekst nije u oblikku maila")]
+        [EmailAddress(ErrorMessage ="unesite validnu email adresu")]
+        [Required(ErrorMessage = "Polje je obavezno")]
         public string Email { get; set; }
 
-       
+
         [Required(ErrorMessage = "Polje je obavezno.")]
         [MaxLength(16)]
         [DataType(DataType.DateTime)]
@@ -42,21 +45,21 @@ namespace ClassLibrary1.ViewModels
         [MaxLength(512)]
         public string Napomena { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Polje je obavezno.")]
         public int TerminRezervacijeID { get; set; }
 
-        [Required(ErrorMessage = "Polje je obavezno.")]
+       
         public List<SelectListItem> TerminRezervacije { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Polje je obavezno.")]
         public int brojOsobaID { get; set; }
 
-        [Required(ErrorMessage = "Polje je obavezno.")]
+       
         public List<SelectListItem> brojOsoba { get; set; }
 
-        [Required]
-        public int PoslovnicaID { get; set; }
         [Required(ErrorMessage = "Polje je obavezno.")]
+        public int PoslovnicaID { get; set; }
+       
         public List<SelectListItem> poslovnice { get; set; }
 
     }

@@ -48,9 +48,9 @@ namespace ClassLibrary1.Models
             //                                Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30"
             //                            );
 
-            optionsBuilder.UseSqlServer(@"             Server = tcp:p1903.database.windows.net,1433; Initial Catalog = bazaRestoran; Persist Security Info = False;
-                                                User ID = restoranTest; Password =testTest123; MultipleActiveResultSets = False; Encrypt = True;
-                                                TrustServerCertificate = False; Connection Timeout = 30;
+            optionsBuilder.UseSqlServer(@"           Server=tcp:p1903restoran.database.windows.net,1433;Initial Catalog=restoran;
+                                            Persist Security Info=False;User ID=testniUser;Password=testTest123;
+                                                MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 "
                                         );
 
