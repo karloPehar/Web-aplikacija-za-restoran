@@ -21,6 +21,8 @@
     <Compile Remove="Migrations\20200907191359_rezervacija-dodavanje-klasa.Designer.cs" />
     <Compile Remove="Migrations\20200907192803_rezervacija-klase.cs" />
     <Compile Remove="Migrations\20200907192803_rezervacija-klase.Designer.cs" />
+    <Compile Remove="Migrations\20201002140009_dodavanje_komentar_klase.cs" />
+    <Compile Remove="Migrations\20201002140009_dodavanje_komentar_klase.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

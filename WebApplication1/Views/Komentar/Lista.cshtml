@@ -1,0 +1,48 @@
+﻿
+@using ClassLibrary1.ViewModels;
+@{ 
+
+   var komentari = (List<KomentarVM>)ViewData["komentariVD"];
+
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body data-spy="scroll" data-target="#ftco-navbar" data-offset="200">
+
+
+
+
+
+    <div class="container">
+
+        @foreach (var x in komentari)
+        {
+            <div class="row">
+                <div class="col-md-12 text-center mb-5 ftco-animate">
+
+                    <h2 class="display-4">@x.Username</h2>
+                    <div class="row justify-content-center">
+                        <div class="col-md-7">
+                            <p class="lead">@x.Sadrzaj</p>
+                        </div>
+                    </div>
+                    <h4 class="ftco-sub-title">@x.vrijemePostavljanja</h4>
+                </div>
+
+
+            </div>
+        }
+
+
+    </div>
+
+    <!-- END section -->
+
+
+</body>
+</html>

@@ -35,7 +35,7 @@ namespace ClassLibrary1.Models
 
         public DbSet<TerminRezervacije> TerminRezervacije { get; set; }
 
-
+        public DbSet<Komentar> Komentar { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
