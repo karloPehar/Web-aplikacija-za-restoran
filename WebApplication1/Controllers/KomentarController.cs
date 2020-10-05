@@ -19,9 +19,10 @@ namespace WebApplication1.Controllers
                 {
                     Username = k.User.ime,
                     Sadrzaj = k.Sadrzaj,
-                    vrijemePostavljanja = k.VrijemePostavljanja.ToShortDateString()
+                    vrijemePostavljanja = k.VrijemePostavljanja.ToShortDateString(),
+                    KomentarID= k.KomentarID
 
-                }).OrderByDescending(v=> v.vrijemePostavljanja).ToList();
+                }).OrderByDescending(v=> v.KomentarID).ToList();
 
 
             db.Dispose();
@@ -29,6 +30,47 @@ namespace WebApplication1.Controllers
 
 
             return View();
+        }
+
+        public IActionResult Dodaj()
+        {
+
+            return PartialView();
+        }
+
+        public IActionResult Snimi(KomentarVM model)
+        {
+            //testiranje rada kontrolera
+           
+           
+            if (ModelState.IsValid)
+            {
+                mojDbContext db = new mojDbContext();
+                Komentar novi = new Komentar
+                {
+                    Sadrzaj = model.Sadrzaj,
+                    VrijemePostavljanja = DateTime.Now,
+                    UserID = 2
+
+
+
+
+                };
+
+                db.Komentar.Add(novi);
+                db.SaveChanges();
+                db.Dispose();
+
+            }
+
+            return RedirectToAction("Lista");
+        }
+
+        public IActionResult Ponisti()
+        {
+
+
+            return PartialView("DodajButtonPartial");
         }
     }
 }

@@ -35,8 +35,27 @@
                     <h2 class="h5 ftco-subheading mb-5 ftco-animate">A free template for Restaurant Websites Distributed by <a href="https://themewagon.com/" target="_blank">ThemeWagon</a></h2>
 
                     @*<p><a class="btn btn-outline-white btn-lg ftco-animate" data-url="@Url.Action("Index","Rezervacija")" data-toggle="ajax-modal" data-target="#reservationModal">Reservation</a></p>*@
-                    <button type="button" class="btn btn-outline-white btn-lg ftco-animate" style="color:white" data-toggle="ajax-modal" data-target="#reservationModal" data-url="@Url.Action("Index","Rezervacija")">Rezervacija</button>
+                    
+                    
+                    
 
+
+
+
+                    @*<button type="button" class="btn btn-outline-white btn-lg ftco-animate" style="color:white" data-toggle="ajax-modal" data-target="#reservationModal" data-url="@Url.Action("Index","Rezervacija")">Rezervacija</button>*@
+                    <button type="button" class="btn btn-outline-white btn-lg ftco-animate" style="color:white" ajax-modalni="da" ajax-rezultat="modal-placeholder" ajax-url="@Url.Action("Index","Rezervacija")">Rezervacija</button>
+                    
+    
+    
+    
+    
+    
+    
+    
+    
+    @*<button type="button" class="btn btn-outline-white btn-lg ftco-animate" style="color:white" ajax-poziv="da"
+                ajax-rezultat="modal-placeholder" modalni="reservationModal"
+        data-toggle="ajax-modal" data-target="#reservationModal" ajax-url="@Url.Action("Index", "Rezervacija")">Rezervacija</button>*@
 
                 </div>
             </div>
@@ -44,23 +63,7 @@
         </div>
     </section> -->
     <!-- END section -->
-    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script type="text/javascript">
-
-            $(function () {
-                var placeholderElement = $('#modal-placeholder');
-                $('button[data-toggle="ajax-modal"]').click(function (event) {
-                    var url = $(this).data('url');
-                    $.get(url).done(function (data) {
-                        placeholderElement.html(data);
-                        placeholderElement.find('.modal').modal('show');
-                    });
-                });
-            });
-
-
-
-        </script>*@
+   
 
 
 

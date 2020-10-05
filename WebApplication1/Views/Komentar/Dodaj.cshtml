@@ -1,0 +1,41 @@
+﻿
+@model ClassLibrary1.ViewModels.KomentarVM
+
+
+
+
+<form asp-action="Snimi"  method="post">
+
+    <div class="row">
+        <div class="col-md-8 form-group mx-auto">
+            <button type="button" class="close mx-auto" style="float:none" ajax-poziv="da" ajax-rezultat="unosKomentarPlaceholder" ajax-url="@Url.Action("Ponisti","Komentar")">
+                <small>Poništi komentar </small><span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-8 form-group mx-auto">
+                @*<label asp-for="Sadrzaj">Message</label>*@
+                <textarea class="form-control" asp-for="Sadrzaj" cols="30" rows="7"></textarea>
+                <span asp-validation-for="Sadrzaj" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 form-group mx-auto">
+                <input type="submit" class="btn btn-primary btn-lg btn-block" value="Dodaj Komentar" >
+               
+            </div>
+        </div>
+
+
+</form>
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+
+
