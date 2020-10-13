@@ -1,0 +1,50 @@
+﻿
+<!-- Modal -->
+@{
+   var neuspjesnaPrijava = TempData["neuspjesnaPrijava"];
+
+    @model ClassLibrary1.ViewModels.PrijavaVM
+
+}
+<div class="modal fade" id="prijavaModal" tabindex="-1" role="dialog" aria-labelledby="addContactLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addContactLabel">Prijavi se</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Prijava">
+                    <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
+                    <input name="PogresanUnos" type="hidden" value="@neuspjesnaPrijava" />
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Lozinka"></label>
+                        <input asp-for="Lozinka" type="password" class="form-control" />
+                        <span asp-validation-for="Lozinka" class="text-danger"></span>
+                    </div>
+                   
+                    <div class="form-group">
+                        @if (neuspjesnaPrijava != null)
+                        {
+                            <div class="alert alert-danger " data-alert="alert">
+                                <a class="close" data-dismiss="alert">&times;</a>
+                                <p class="text-center text-danger">@neuspjesnaPrijava</p>
+                            </div>
+                        }
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-save="modal">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

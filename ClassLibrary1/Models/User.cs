@@ -24,9 +24,7 @@ namespace ClassLibrary1.Models
         [MaxLength(64)]
         public string prezime { get; set; }
        
-        [Required(AllowEmptyStrings = false)]
-        [MaxLength(64)]
-        public string email { get; set; }
+        
 
         [Required(AllowEmptyStrings =false)]
         [MaxLength(20)]
@@ -35,5 +33,9 @@ namespace ClassLibrary1.Models
         [Required(AllowEmptyStrings = false)]
         [MaxLength(64)]
         public string adresaStanovanja { get; set; }
+
+        public Nalog Nalog { get; set; }
+
+        public int? NalogID { get; set; }
     }
 }

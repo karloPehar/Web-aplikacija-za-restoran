@@ -8,6 +8,9 @@
     ViewData["Title"] = "Home Page";
     Layout = "_Layout";
     var rezervacijaText=  TempData["uspjesnaRezervacija"];
+
+
+
 }
 
 <!DOCTYPE html>
@@ -43,7 +46,7 @@
 
 
                     @*<button type="button" class="btn btn-outline-white btn-lg ftco-animate" style="color:white" data-toggle="ajax-modal" data-target="#reservationModal" data-url="@Url.Action("Index","Rezervacija")">Rezervacija</button>*@
-                    <button type="button" class="btn btn-outline-white btn-lg ftco-animate" style="color:white" ajax-modalni="da" ajax-rezultat="modal-placeholder" ajax-url="@Url.Action("Index","Rezervacija")">Rezervacija</button>
+                    <button type="button" class="btn btn-outline-white btn-lg ftco-animate" style="color:white" ajax-modalni="da" ajax-rezultat="PrijavaPlaceholder" ajax-url="@Url.Action("Index","Rezervacija")">Rezervacija</button>
                     
     
     

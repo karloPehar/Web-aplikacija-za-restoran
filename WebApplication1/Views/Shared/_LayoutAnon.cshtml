@@ -2,9 +2,8 @@
 @using WebApplication1.Helper
 @using Microsoft.AspNetCore.Http;
 @{
-   
-     User aktivan = Autenfikacija.GetLogiraniKorisnik(Context);
-
+    // Nalog aktivan = Autenfikacija.GetLogiraniKorisnik(Context);
+    Layout = "_LayoutAnon";
 }
 
 <!DOCTYPE html>
@@ -36,28 +35,17 @@
     <link rel="stylesheet" href="/css/icomoon.css">
     <link rel="stylesheet" href="/css/style.css">
 
-   
+
 
 </head>
 <body>
 
-
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-               
-                @{
-                    if (aktivan == null)
-                    {
-                        <button type="button" class="navbar-brand btn btn-light" ajax-modalni="da" ajax-rezultat="PrijavaPlaceholder" ajax-url="@Url.Action("Index", "Prijava")"> Prijavi se</button>
-                    }
-                    else
-                    {
-                        <a asp-controller="Prijava" asp-action="Odjava" class="navbar-brand btn btn-light">@aktivan.ime</a>
-                    }
-                }
-
-
+                <a class="navbar-brand btn btn-light" asp-controller="Home" asp-action="Index">Taste</a>
+                @*<a class="navbar-brand" href="/Prijava/index" ajax-modalni="da" ajax-rezultat="PrijavaPlaceholder">Prijava</a>*@
+                <button type="button" class="navbar-brand btn btn-light" ajax-modalni="da" ajax-rezultat="PrijavaPlaceholder" ajax-url="@Url.Action("Index","Prijava")"> Prijavi se</button>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="oi oi-menu"></span> Menu
                 </button>
@@ -70,21 +58,17 @@
                         <li class="nav-item"><a asp-controller="Obavijest" asp-action="Novosti" class="nav-link">Vijesti</a></li>
                         <li class="nav-item"><a asp-controller="Galerija" asp-action="Slike" class="nav-link">Galerija</a></li>
                         <li class="nav-item"><a asp-controller="Komentar" asp-action="Lista" class="nav-link">Komentari</a></li>
-                      
-
-                       
+                        @*<li class="nav-item"><a asp-controller="Komentar" asp-action="Lista" class="nav-link">@aktivan.Email</a></li>*@
+                        @*<li class="nav-item"><a href="#section-contact" class="nav-link">Kontakt</a></li>
+                        *@
                     </ul>
                 </div>
             </div>
         </nav>
         <div id="PrijavaPlaceholder"></div>
     </header>
-    
 
     @RenderBody()
-
-
-
 
 
     <script src="~/js/jquery.min.js"></script>

@@ -37,6 +37,10 @@ namespace ClassLibrary1.Models
 
         public DbSet<Komentar> Komentar { get; set; }
 
+        public DbSet<Nalog> Nalog { get; set; }
+
+        public DbSet<Token> Token { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
