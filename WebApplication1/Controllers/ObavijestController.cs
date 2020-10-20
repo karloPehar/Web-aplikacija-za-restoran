@@ -10,10 +10,16 @@ namespace WebApplication1.Controllers
 {
     public class ObavijestController : Controller
     {
+        private mojDbContext db;
+
+        public ObavijestController(mojDbContext c)
+        {
+            db = c;
+        }
         public IActionResult Novosti()
         {
 
-            mojDbContext db = new mojDbContext();
+           // mojDbContext db = new mojDbContext();
 
             List<ObavijestVM> obavijest = db.Obavijest
                 .Select(p => new ObavijestVM
@@ -27,7 +33,7 @@ namespace WebApplication1.Controllers
                 }).OrderByDescending(p => p.ObavijestID).ToList();
 
             ViewData["obavijestiKljuc"] = obavijest;
-            db.Dispose();
+           // db.Dispose();
 
 
             return View();
@@ -36,13 +42,13 @@ namespace WebApplication1.Controllers
         public int brojacObavijesti()
         {
 
-            mojDbContext db = new mojDbContext();
+            //mojDbContext db = new mojDbContext();
             int br=0;
             br = db.Obavijest.Select(o => o.ObavijestID).Count();
 
 
 
-            db.Dispose();
+            //db.Dispose();
 
             return br;
 

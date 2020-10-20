@@ -10,9 +10,15 @@ namespace WebApplication1.Controllers
 {
     public class JelovnikController : Controller
     {
+        private mojDbContext db;
+
+        public JelovnikController(mojDbContext c)
+        {
+            db = c;
+        }
         public IActionResult Proizvodi()
         {
-            mojDbContext db = new mojDbContext();
+            //mojDbContext db = new mojDbContext();
 
             List<ProizvodJelovnikVM> proizvodiDorucak = db.Proizvod
                 .Select(p => new ProizvodJelovnikVM
@@ -54,7 +60,7 @@ namespace WebApplication1.Controllers
 
                 }).Where(p => p.tipProizvoda == "vecera").ToList();
 
-            db.Dispose();
+           // db.Dispose();
 
             ViewData["proizvodiDorucak"] = proizvodiDorucak;
             ViewData["proizvodiRucak"] = proizvodiRucak;

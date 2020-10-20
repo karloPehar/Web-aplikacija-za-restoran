@@ -10,10 +10,16 @@ namespace WebApplication1.Controllers
 {
     public class GalerijaController : Controller
     {
+        private mojDbContext db;
+
+        public GalerijaController(mojDbContext c)
+        {
+            db = c;
+        }
         public IActionResult Slike()
         {
 
-            mojDbContext db = new mojDbContext();
+           
 
             List<SlikaVM> slika = db.Slika
                 .Select(s => new SlikaVM
@@ -25,7 +31,7 @@ namespace WebApplication1.Controllers
                 }).ToList();
 
             ViewData["slikaKljuc"] = slika;
-            db.Dispose();
+            //db.Dispose();
 
 
             return View();

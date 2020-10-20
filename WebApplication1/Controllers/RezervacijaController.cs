@@ -6,14 +6,23 @@ using Microsoft.AspNetCore.Mvc;
 using ClassLibrary1.ViewModels;
 using ClassLibrary1.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using WebApplication1.Helper;
 
 namespace WebApplication1.Controllers
 {
+   
     public class RezervacijaController : Controller
     {
+        private mojDbContext db;
+
+        public RezervacijaController(mojDbContext c)
+        {
+            db = c;
+        }
+        [Autorizacija(true,true)]
         public IActionResult Index()
         {
-            mojDbContext db = new mojDbContext();
+           // mojDbContext db = new mojDbContext();
 
 
             RezervacijaVM model = new RezervacijaVM();
@@ -47,7 +56,7 @@ namespace WebApplication1.Controllers
 
                  }).ToList();
 
-            db.Dispose();
+            //db.Dispose();
             return PartialView("~/Views/Rezervacija/Rezervacija.cshtml", model);
         }
 
@@ -58,7 +67,7 @@ namespace WebApplication1.Controllers
 
             if (ModelState.IsValid)
             {
-                mojDbContext db = new mojDbContext();
+               // mojDbContext db = new mojDbContext();
 
 
 
@@ -82,7 +91,7 @@ namespace WebApplication1.Controllers
 
                 db.Add(nova);
                 db.SaveChanges();
-                db.Dispose();
+               // db.Dispose();
                 TempData["uspjesnaRezervacija"] = "rezervacija uspjesno obavljena";
             }
            else
@@ -90,6 +99,7 @@ namespace WebApplication1.Controllers
 
             //return View("~/Views/Home/index.cshtml");
             return RedirectToAction("Index", "Home");
+            //return PartialView("Rezervacija");
 
 
 
@@ -103,7 +113,7 @@ namespace WebApplication1.Controllers
         {
             int brPos = 0;
 
-            mojDbContext db = new mojDbContext();
+            //mojDbContext db = new mojDbContext();
             
 
             brPos = db.Poslovnica
@@ -114,7 +124,7 @@ namespace WebApplication1.Controllers
 
 
                }).ToList().Count();
-            db.Dispose();
+            //db.Dispose();
             return brPos;
         }
 
@@ -122,7 +132,7 @@ namespace WebApplication1.Controllers
         {
             int brTer = 0;
 
-            mojDbContext db = new mojDbContext();
+          //  mojDbContext db = new mojDbContext();
             
 
             brTer = db.TerminRezervacije
@@ -133,7 +143,7 @@ namespace WebApplication1.Controllers
 
 
                 }).ToList().Count();
-            db.Dispose();
+           // db.Dispose();
             return brTer;
         }
 
@@ -141,7 +151,7 @@ namespace WebApplication1.Controllers
         {
             int brOsoba = 0;
 
-            mojDbContext db = new mojDbContext();
+           // mojDbContext db = new mojDbContext();
 
 
             brOsoba = db.BrojOsoba
@@ -152,7 +162,7 @@ namespace WebApplication1.Controllers
 
 
                 }).ToList().Count();
-            db.Dispose();
+            //db.Dispose();
             return brOsoba;
         }
     }

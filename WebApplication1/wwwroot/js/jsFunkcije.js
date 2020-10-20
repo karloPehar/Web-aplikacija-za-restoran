@@ -69,16 +69,18 @@ function modalniButton() {
 }
 $(document).ready(function () {
     // izvršava nakon što glavni html dokument bude generisan
-    modalniButton();
     DodajAjaxEvente();
+    modalniButton();
+    
    
   
 });
 
 $(document).ajaxComplete(function () {
     // izvršava nakon bilo kojeg ajax poziva
-    modalniButton();
     DodajAjaxEvente();
+    modalniButton();
+   
    
    
 });

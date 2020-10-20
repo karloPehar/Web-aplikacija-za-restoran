@@ -1,8 +1,11 @@
 ﻿
 @using ClassLibrary1.ViewModels;
+@using ClassLibrary1.Models;
+@using WebApplication1.Helper
 @{ 
 
-   var komentari = (List<KomentarVM>)ViewData["komentariVD"];
+    var komentari = (List<KomentarVM>)ViewData["komentariVD"];
+    User aktivan = Autenfikacija.GetLogiraniKorisnik(Context);
 
 }
 
@@ -19,22 +22,21 @@
 
 
     <div class="container">
-        @*<div class="row">
-            <div id="unosKomentarPlaceholder">
-
-
-
-
-
-            </div>
-        </div>*@
+        
 
         <div class="row">
             <div class="col-md-12 text-center mb-5 ftco-animate" id="unosKomentarPlaceholder">
 
-                @*<h2 class="display-4"><a href="/Komentar/Dodaj" ajax-poziv="da" ajax-rezultat="unosKomentarPlaceholder" >dodaj komentar</a></h2>*@
-                <button class="display-4" style="border:none; color:orangered; background-color:white " ajax-poziv="da" ajax-rezultat="unosKomentarPlaceholder" ajax-url="@Url.Action("Dodaj","Komentar")">dodaj komentar</button>
 
+                @{ if (aktivan != null)
+                    {
+                        <button class="display-4" style="border:none; color:orangered; background-color:white " ajax-poziv="da" ajax-rezultat="unosKomentarPlaceholder" ajax-url="@Url.Action("Dodaj", "Komentar")">dodaj komentar</button>
+                    }
+                    else
+                    {
+            <button type="button" class="display-4" style="border:none; color:orangered; background-color:white " ajax-modalni="da" ajax-rezultat="PrijavaPlaceholder" ajax-url="@Url.Action("Index", "Prijava")"> dodaj komentar</button>
+                    }
+                }
             </div>
 
 

@@ -5,14 +5,24 @@ using System.Threading.Tasks;
 using ClassLibrary1.Models;
 using ClassLibrary1.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using WebApplication1.Helper;
 
 namespace WebApplication1.Controllers
 {
     public class KomentarController : Controller
     {
+
+        private mojDbContext db;
+
+        public KomentarController(mojDbContext c)
+        {
+            db = c;
+        }
+
+       
         public IActionResult Lista()
         {
-            mojDbContext db = new mojDbContext();
+            //mojDbContext db = new mojDbContext();
 
             ViewData["komentariVD"] = db.Komentar
                 .Select(k => new KomentarVM
@@ -25,13 +35,13 @@ namespace WebApplication1.Controllers
                 }).OrderByDescending(v=> v.KomentarID).ToList();
 
 
-            db.Dispose();
+           // db.Dispose();
 
 
 
             return View();
         }
-
+        [Autorizacija(true,true)]
         public IActionResult Dodaj()
         {
 
@@ -45,7 +55,7 @@ namespace WebApplication1.Controllers
            
             if (ModelState.IsValid)
             {
-                mojDbContext db = new mojDbContext();
+               // mojDbContext db = new mojDbContext();
                 Komentar novi = new Komentar
                 {
                     Sadrzaj = model.Sadrzaj,
@@ -59,7 +69,7 @@ namespace WebApplication1.Controllers
 
                 db.Komentar.Add(novi);
                 db.SaveChanges();
-                db.Dispose();
+                //db.Dispose();
 
             }
 

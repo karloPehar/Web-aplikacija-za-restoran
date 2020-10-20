@@ -12,6 +12,12 @@ namespace WebApplication1.Controllers
 {
     public class PrijavaController : Controller
     {
+        private mojDbContext db;
+
+        public PrijavaController(mojDbContext c)
+        {
+            db = c;
+        }
         public IActionResult Index()
         {
             return PartialView();
@@ -23,7 +29,7 @@ namespace WebApplication1.Controllers
 
             if (ModelState.IsValid)
             {
-                mojDbContext db = new mojDbContext();
+               // mojDbContext db = new mojDbContext();
 
 
                 //Nalog x = db.Nalog.SingleOrDefault(n => n.Email == model.Email && n.Lozinka == model.Lozinka);

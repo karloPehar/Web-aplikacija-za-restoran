@@ -3,12 +3,13 @@
 @using Microsoft.EntityFrameworkCore;
 @using ClassLibrary1.Models;
 @using System.Linq;
+@using WebApplication1.Helper
 
 @{
     ViewData["Title"] = "Home Page";
     Layout = "_Layout";
     var rezervacijaText=  TempData["uspjesnaRezervacija"];
-
+    User aktivan = Autenfikacija.GetLogiraniKorisnik(Context);
 
 
 }
@@ -37,28 +38,33 @@
                     <h1 class="ftco-heading ftco-animate mb-3">Welcome To Taste Restaurant</h1>
                     <h2 class="h5 ftco-subheading mb-5 ftco-animate">A free template for Restaurant Websites Distributed by <a href="https://themewagon.com/" target="_blank">ThemeWagon</a></h2>
 
-                    @*<p><a class="btn btn-outline-white btn-lg ftco-animate" data-url="@Url.Action("Index","Rezervacija")" data-toggle="ajax-modal" data-target="#reservationModal">Reservation</a></p>*@
-                    
-                    
-                    
 
 
 
 
-                    @*<button type="button" class="btn btn-outline-white btn-lg ftco-animate" style="color:white" data-toggle="ajax-modal" data-target="#reservationModal" data-url="@Url.Action("Index","Rezervacija")">Rezervacija</button>*@
-                    <button type="button" class="btn btn-outline-white btn-lg ftco-animate" style="color:white" ajax-modalni="da" ajax-rezultat="PrijavaPlaceholder" ajax-url="@Url.Action("Index","Rezervacija")">Rezervacija</button>
-                    
-    
-    
-    
-    
-    
-    
-    
-    
-    @*<button type="button" class="btn btn-outline-white btn-lg ftco-animate" style="color:white" ajax-poziv="da"
-                ajax-rezultat="modal-placeholder" modalni="reservationModal"
-        data-toggle="ajax-modal" data-target="#reservationModal" ajax-url="@Url.Action("Index", "Rezervacija")">Rezervacija</button>*@
+
+
+                    @{
+                        if (aktivan != null)
+                        {
+                            <button type="button" class="btn btn-outline-white btn-lg ftco-animate" style="color:white" ajax-modalni="da" ajax-rezultat="modal-placeholder" ajax-url="@Url.Action("Index","Rezervacija")">Rezervacija</button>
+
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-outline-white btn-lg ftco-animate" style="color:white" ajax-modalni="da" ajax-rezultat="PrijavaPlaceholder" ajax-url="@Url.Action("Index", "Prijava")"> Rezervacija</button>
+
+                        }
+                    }
+                  
+
+
+
+
+
+
+
+
 
                 </div>
             </div>

@@ -8,6 +8,30 @@ namespace ClassLibrary1.Models
 {
     public class mojDbContext : DbContext
     {
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+
+        //{
+
+        //    //optionsBuilder.UseSqlServer(@" Server=.;Database=p1903;Trusted_Connection=true;MultipleActiveResultSets=true;User ID=sa;Password=test");
+        //    //optionsBuilder.UseSqlServer(@" Server = tcp:p1903.database.windows.net,1433; Initial Catalog = restoran; Persist Security Info = False;
+        //    //                                User ID = restoranTest; Password =testTest123; MultipleActiveResultSets = False;
+        //    //                                Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30"
+        //    //                            );
+
+        //    optionsBuilder.UseSqlServer(@"Server=tcp:p1903restoran.database.windows.net,1433;Initial Catalog=restoran;
+        //                                    Persist Security Info=False;User ID=testniUser;Password=testTest123;
+        //                                        MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
+        //                                );
+
+
+        //}
+        public mojDbContext(DbContextOptions<mojDbContext> options)
+            : base(options)
+        {
+        }
+
+       
+
         public DbSet<User> User { get; set; }
 
         public DbSet<Proizvod> Proizvod { get; set; }
@@ -42,24 +66,7 @@ namespace ClassLibrary1.Models
         public DbSet<Token> Token { get; set; }
 
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-
-        {
-
-            //optionsBuilder.UseSqlServer(@" Server=.;Database=p1903;Trusted_Connection=true;MultipleActiveResultSets=true;User ID=sa;Password=test");
-            //optionsBuilder.UseSqlServer(@" Server = tcp:p1903.database.windows.net,1433; Initial Catalog = restoran; Persist Security Info = False;
-            //                                User ID = restoranTest; Password =testTest123; MultipleActiveResultSets = False;
-            //                                Encrypt = True; TrustServerCertificate = False; Connection Timeout = 30"
-            //                            );
-
-            optionsBuilder.UseSqlServer(@"           Server=tcp:p1903restoran.database.windows.net,1433;Initial Catalog=restoran;
-                                            Persist Security Info=False;User ID=testniUser;Password=testTest123;
-                                                MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
-"
-                                        );
-
-
-        }
+       
 
 
     }

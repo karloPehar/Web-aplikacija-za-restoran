@@ -10,9 +10,15 @@ namespace WebApplication1.Controllers
 {
     public class ProizvodController : Controller
     {
+        private mojDbContext db;
+
+        public ProizvodController(mojDbContext c)
+        {
+            db = c;
+        }
         public IActionResult Ponuda()
         {
-            mojDbContext db = new mojDbContext();
+           // mojDbContext db = new mojDbContext();
 
             List<ProizvodVM> proizvodi = db.Proizvod
                 .Select(p => new ProizvodVM
@@ -26,7 +32,7 @@ namespace WebApplication1.Controllers
 
                 }).ToList();
 
-            db.Dispose();
+           // db.Dispose();
 
             ViewData["ProizvodKljuc"] = proizvodi;
            
