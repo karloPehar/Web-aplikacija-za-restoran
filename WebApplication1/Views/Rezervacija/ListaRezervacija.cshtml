@@ -1,0 +1,58 @@
+﻿
+@using ClassLibrary1.ViewModels;
+@using ClassLibrary1.Models;
+@using WebApplication1.Helper
+@{
+
+  
+    User aktivan = Autenfikacija.GetLogiraniKorisnik(Context);
+
+}
+
+
+
+
+
+
+
+
+    <div class="container " style="border:1px solid grey">
+
+
+        <div class="row" >
+
+            <div class="col-md-10">
+                <H4 style="color: grey;">Moje rezervacije</H4>
+            </div>
+            <div class="col-md-2">
+                @*<button type="button" asp-controller="Prijava" asp-action="Odjava" style="border:none;  background-color:white"><h4 class="align-middle" style="color:orangered;">Odjava</h4></button>*@
+                @*<a asp-controller="Prijava" asp-action="Odjava" class="navbar-brand btn btn-light" style="color:orangered">Odjava</a>*@
+                <a asp-controller="Prijava" asp-action="Odjava"  ><h4 style="color:orangered">Odjava</h4></a>
+            </div>
+
+
+
+        </div>
+        <div class="row ftco-animate">
+            <div id="rezervacijePlaceholder" class="col-12" ></div>
+
+        </div>
+
+
+
+    </div>
+    <script src="~/js/jquery.min.js"></script>
+    <script>
+        
+        $(function () {
+            $.get("/Rezervacija/PrikazRezervacija", function (data) {
+                $("#rezervacijePlaceholder").html(data)
+            })
+        })
+    </script>
+
+    
+
+    <!-- END section -->
+
+

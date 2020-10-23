@@ -165,5 +165,19 @@ namespace WebApplication1.Controllers
             //db.Dispose();
             return brOsoba;
         }
+
+
+        public IActionResult ListaRezervacija()
+        {
+
+            return View();
+        }
+
+        public IActionResult PrikazRezervacija()
+        {
+
+
+            return PartialView("ListaRezervacijaPartial");
+        }
     }
 }

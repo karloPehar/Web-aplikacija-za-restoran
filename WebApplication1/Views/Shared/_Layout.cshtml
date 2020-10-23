@@ -53,7 +53,8 @@
                     }
                     else
                     {
-                        <a asp-controller="Prijava" asp-action="Odjava" class="navbar-brand btn btn-light">@aktivan.ime</a>
+                        @*<a asp-controller="Prijava" asp-action="Odjava" class="navbar-brand btn btn-light">@aktivan.ime</a>*@
+                        <a asp-controller="Rezervacija" asp-action="ListaRezervacija" class="navbar-brand btn btn-light">@aktivan.ime</a>
                     }
                 }
 
