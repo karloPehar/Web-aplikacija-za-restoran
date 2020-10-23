@@ -4,38 +4,59 @@
 @using WebApplication1.Helper
 @{
 
-  
-    User aktivan = Autenfikacija.GetLogiraniKorisnik(Context);
+
+    var rezervacije = (List<RezervacijaPrikazVM>)ViewData["aktivneRezervacije"];
+     User aktivan = Autenfikacija.GetLogiraniKorisnik(Context);
+}
+@{
+    if (rezervacije.Count()==0)
+    {
+        <div class="alert alert-light col-12" role="alert">
+            Trenutno nemate aktivnih rezervacija!
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered col-12 text-center">
+            <thead class="thead-light  text-center">
+                <tr>
+
+                    <th scope="col" class="text-center">Lokacija</th>
+                    <th scope="col" class="text-center">Datum</th>
+                    <th scope="col" class="text-center">Termin</th>
+                    <th scope="col" class="text-center">Broj osoba</th>
+                    <th scope="col" class="text-center">Poništavanje </th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+
+
+
+
+                @foreach (var x in rezervacije)
+                {
+                <tr>
+
+                    <td>@x.Lokacija</td>
+                    <td>@x.Datum</td>
+                    <td>@x.Termin</td>
+                    <td>@x.BrojOsoba</td>
+                    <td><a href="/Rezervacija/PonistiRezervaciju?rezervacijaID=@x.RezervacijaID&userID=@aktivan.UserID" ajax-poziv="da" ajax-rezultat="rezervacijePlaceholder" style="color:orangered">Poništi</a></td>
+
+                </tr>
+                }
+
+
+            </tbody>
+
+        </table>
+
+    }
+
+
+
 
 }
-    
-    <table class="table table-bordered col-12 text-center">
-        <thead class="thead-light  text-center">
-            <tr>
 
-                <th scope="col" class="text-center">lokacija</th>
-                <th scope="col" class="text-center">Datum</th>
-                <th scope="col" class="text-center">Termin</th>
-                <th scope="col" class="text-center">Broj osoba</th>
-                <th scope="col" class="text-center">Ponitavanje </th>
-            </tr>
-        </thead>
-
-        <tbody>
-
-            <tr>
-
-                <td>asdfsdf sdfsdf sdfsdf</td>
-                <td>21.21.2121</td>
-                <td>12:12</td>
-                <td>5</td>
-                <td><a href="#" style="color:orangered">Poništi</a></td>
-
-            </tr>
-
-        </tbody>
-        
-    </table>
-    <div class="alert alert-light col-12" role="alert">
-        Trenutno nemate aktivnih rezervacija!
-    </div>

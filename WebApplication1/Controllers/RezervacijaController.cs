@@ -173,11 +173,40 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        public IActionResult PrikazRezervacija()
+        [Autorizacija(true,true)]
+        public IActionResult PrikazRezervacija(int userID)
         {
+            
+            ViewData["aktivneRezervacije"] = db.Rezervacija
+                .Where(u=> u.User.UserID==userID)
+               .Select(k => new RezervacijaPrikazVM
+               {
+                   RezervacijaID = k.RezervacijaID,
+                   Lokacija = k.Poslovnica.Adresa,
+                   Datum = k.DatumRezervacije,
+                   Termin = k.TerminRezervacije.terminRez,
+                   BrojOsoba = k.BrojOsoba.brOsoba
 
+               }).ToList();
 
             return PartialView("ListaRezervacijaPartial");
         }
+
+        [Autorizacija(true,true)]
+        public IActionResult PonistiRezervaciju(int rezervacijaID, int userID)
+        {
+            User u = Autenfikacija.GetLogiraniKorisnik(HttpContext);
+            if(u.UserID==userID)
+            {
+                Rezervacija r = db.Rezervacija.Find(rezervacijaID);
+                db.Remove(r);
+                db.SaveChanges();
+
+                return RedirectToAction("PrikazRezervacija", new { userID = userID });
+            }
+            return Redirect("/Home/Index");
+           
+        }
     }
+
 }

@@ -88,7 +88,7 @@ namespace UnitTest
         {
 
             RezervacijaController pc = new RezervacijaController(db);
-            PartialViewResult vr = (PartialViewResult)pc.PrikazRezervacija();
+            PartialViewResult vr = (PartialViewResult)pc.PrikazRezervacija(33);
             Assert.IsNotNull(vr);
 
 
