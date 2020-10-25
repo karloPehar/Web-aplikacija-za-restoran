@@ -25,11 +25,7 @@ namespace ClassLibrary1.Models
 
 
         //}
-        public mojDbContext(DbContextOptions<mojDbContext> options)
-            : base(options)
-        {
-        }
-
+       
        
 
         public DbSet<User> User { get; set; }
@@ -65,8 +61,14 @@ namespace ClassLibrary1.Models
 
         public DbSet<Token> Token { get; set; }
 
+        public DbSet<Email> Email { get; set; }
 
-       
+
+        public mojDbContext(DbContextOptions<mojDbContext> options)
+            : base(options)
+        {
+        }
+
 
 
     }
