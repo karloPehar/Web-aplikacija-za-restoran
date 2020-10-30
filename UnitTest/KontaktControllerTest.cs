@@ -1,5 +1,7 @@
 ﻿using ClassLibrary1.Models;
+using ClassLibrary1.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -14,13 +16,13 @@ namespace UnitTest
     {
 
         private mojDbContext db;
-
+        private IConfiguration conf;
 
         public KontaktControllerTest()
         {
             TestniContext test = new TestniContext();
             db = test.InMemoryContext();
-
+            
 
         }
 
@@ -28,12 +30,30 @@ namespace UnitTest
         public void Email_View_Not_null()
         {
 
-            KontaktController pc = new KontaktController(db);
+            KontaktController pc = new KontaktController(db,conf);
             ViewResult vr = (ViewResult)pc.Email();
             Assert.IsNotNull(vr);
 
 
         }
+        //[TestMethod]
+        //public void Slanje_Maila_View_Not_null()
+        //{
+        //    EmailVM model = new EmailVM
+        //    {
+                
+        //        EmailAdresa = null,
+        //        Ime = null,
+        //        Sadrzaj = null,
+
+        //    };
+
+        //    KontaktController pc = new KontaktController(db, conf);
+        //    ActionResult ar = (ActionResult)pc.SlanjeMaila(model);
+        //    Assert.IsNotNull(ar);
+
+
+        //}
 
     }
 }

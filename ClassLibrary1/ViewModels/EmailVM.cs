@@ -14,6 +14,8 @@ namespace ClassLibrary1.ViewModels
         [Required(ErrorMessage = "Polje je obavezno")]
         public string EmailAdresa { get; set; }
         [Required(ErrorMessage = "Polje je obavezno")]
+        [MinLength(15)]
+        [MaxLength(256)]
         public string Sadrzaj { get; set; }
 
 

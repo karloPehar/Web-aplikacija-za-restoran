@@ -8,7 +8,7 @@ namespace ClassLibrary1.Models
 
         public User User { get; set; }
 
-        public int UserID { get; set; }
+        public int? UserID { get; set; }
 
         public string EmailAdresa { get; set; }
 

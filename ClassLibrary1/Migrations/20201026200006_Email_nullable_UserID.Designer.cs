@@ -4,14 +4,16 @@ using ClassLibrary1.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ClassLibrary1.Migrations
 {
     [DbContext(typeof(mojDbContext))]
-    partial class mojDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201026200006_Email_nullable_UserID")]
+    partial class Email_nullable_UserID
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

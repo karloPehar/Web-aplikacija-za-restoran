@@ -11,24 +11,36 @@
 
     
     User aktivan = Autenfikacija.GetLogiraniKorisnik(Context);
-    
+    var tekst= TempData["poslanEmail"];
 
 }
 
     <div class="container">
         <div class="row">
+            @{
+                if (tekst != null)
+                {
+                    <div class="alert alert-success col-md-12 " data-alert="alert">
+                        <a class="close" data-dismiss="alert">&times;</a>
+                        <p class="text-center text-success">@tekst</p>
+                    </div>
+                }
+            }
+
+        </div>
+        <div class="row">
 
             <div class="col-md-12 text-center mb-5 ftco-animate">
                 <h2 class="display-4">Kontaktirajte nas</h2>
-                
-            </div>
 
-            <div class="col-md mb-5 ftco-animate" >
-                <form action="" method="post">
+            </div>
+            
+            <div class="col-md mb-5 ftco-animate">
+                <form asp-controller="Kontakt" asp-action="SlanjeMaila" method="post">
                     <div class="form-group">
                         <label asp-for="Ime" class="sr-only">Ime</label>
                         <input type="text" class="form-control" asp-for="Ime" placeholder="Unesite vaše ime">
-                         <span asp-validation-for="Ime" class="text-danger"></span>
+                        <span asp-validation-for="Ime" class="text-danger"></span>
                     </div>
                     <div class="form-group">
                         <label asp-for="EmailAdresa" class="sr-only">Email</label>
