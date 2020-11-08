@@ -19,6 +19,8 @@
     <ProjectReference Include="..\ConsoleApp9\ConsoleApp9.csproj" />
   </ItemGroup>
 
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
 
 
 </Project>

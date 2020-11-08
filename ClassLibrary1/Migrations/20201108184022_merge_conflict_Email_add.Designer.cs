@@ -4,14 +4,16 @@ using ClassLibrary1.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ClassLibrary1.Migrations
 {
     [DbContext(typeof(mojDbContext))]
-    partial class mojDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201108184022_merge_conflict_Email_add")]
+    partial class merge_conflict_Email_add
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

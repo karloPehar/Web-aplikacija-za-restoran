@@ -23,17 +23,17 @@ namespace WebApplication1
             
         }
 
-        public class mojDbContextFactory : IDesignTimeDbContextFactory<mojDbContext>
-        {
-            public mojDbContext CreateDbContext(string[] args)
-            {
+        //public class mojDbContextFactory : IDesignTimeDbContextFactory<mojDbContext>
+        //{
+        //    public mojDbContext CreateDbContext(string[] args)
+        //    {
                 
-                var optionsBuilder = new DbContextOptionsBuilder<mojDbContext>();
-                optionsBuilder.UseSqlServer(@"Server=tcp:p1903restoran.database.windows.net,1433;Initial Catalog=restoran; Persist Security Info=False;User ID=testniUser;Password=testTest123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30");
+        //        var optionsBuilder = new DbContextOptionsBuilder<mojDbContext>();
+        //        optionsBuilder.UseSqlServer(@"Server=tcp:p1903restoran.database.windows.net,1433;Initial Catalog=restoran; Persist Security Info=False;User ID=testniUser;Password=testTest123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30");
 
-                return new mojDbContext(optionsBuilder.Options);
-            }
-        }
+        //        return new mojDbContext(optionsBuilder.Options);
+        //    }
+        //}
 
 
         public class mojDbContextFactory : IDesignTimeDbContextFactory<mojDbContext>
