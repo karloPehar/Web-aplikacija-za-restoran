@@ -30,7 +30,7 @@ namespace ClassLibrary1.Models
         {
         }
 
-       
+
 
         public DbSet<User> User { get; set; }
 
@@ -64,6 +64,10 @@ namespace ClassLibrary1.Models
         public DbSet<Nalog> Nalog { get; set; }
 
         public DbSet<Token> Token { get; set; }
+
+        public DbSet<Chat> Chat { get; set; }
+
+        public DbSet<Poruka> Poruka { get; set; }
 
 
        
