@@ -63,6 +63,10 @@ namespace ClassLibrary1.Models
 
         public DbSet<Email> Email { get; set; }
 
+        public DbSet<Chat> Chat { get; set; }
+
+        public DbSet<Poruka> Poruka { get; set; }
+
 
         public mojDbContext(DbContextOptions<mojDbContext> options)
             : base(options)

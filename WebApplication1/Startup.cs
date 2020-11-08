@@ -35,10 +35,24 @@ namespace WebApplication1
             }
         }
 
+
+        public class mojDbContextFactory : IDesignTimeDbContextFactory<mojDbContext>
+        {
+            public mojDbContext CreateDbContext(string[] args)
+            {
+
+                var optionsBuilder = new DbContextOptionsBuilder<mojDbContext>();
+                optionsBuilder.UseSqlServer(@"Server=.;Database=restoranTemp;Trusted_Connection=true;MultipleActiveResultSets=true;User ID=sa;Password=test;");
+
+                return new mojDbContext(optionsBuilder.Options);
+            }
+        }
+
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<mojDbContext>(options=> options.UseSqlServer(Configuration.GetConnectionString("IB150198")));
+            services.AddDbContext<mojDbContext>(options=> options.UseSqlServer(Configuration.GetConnectionString("IB150198T")));
             services.AddControllersWithViews();
 
             services.AddMvc();

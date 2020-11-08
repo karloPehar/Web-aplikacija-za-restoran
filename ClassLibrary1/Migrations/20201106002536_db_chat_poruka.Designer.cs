@@ -4,14 +4,16 @@ using ClassLibrary1.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ClassLibrary1.Migrations
 {
     [DbContext(typeof(mojDbContext))]
-    partial class mojDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201106002536_db_chat_poruka")]
+    partial class db_chat_poruka
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,27 +32,6 @@ namespace ClassLibrary1.Migrations
                     b.HasKey("BrojOsobaID");
 
                     b.ToTable("BrojOsoba");
-                });
-
-            modelBuilder.Entity("ClassLibrary1.Models.Email", b =>
-                {
-                    b.Property<int>("EmailID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("EmailAdresa");
-
-                    b.Property<string>("Sadrzaj");
-
-                    b.Property<int?>("UserID");
-
-                    b.Property<DateTime>("VrijemeSlanja");
-
-                    b.HasKey("EmailID");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("Email");
                 });
 
             modelBuilder.Entity("ClassLibrary1.Models.Chat", b =>
@@ -431,13 +412,6 @@ namespace ClassLibrary1.Migrations
                         .WithMany()
                         .HasForeignKey("KorisnikID")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("ClassLibrary1.Models.Email", b =>
-                {
-                    b.HasOne("ClassLibrary1.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserID");
                 });
 
             modelBuilder.Entity("ClassLibrary1.Models.Komentar", b =>
