@@ -6,11 +6,14 @@ using ClassLibrary1.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebApplication1.Helper;
+using WebApplication1.Hubs;
 
 namespace WebApplication1
 {
@@ -58,6 +61,9 @@ namespace WebApplication1
             services.AddMvc();
             services.AddDistributedMemoryCache();
             services.AddSession();
+            
+            services.AddSignalR();
+           // services.AddSingleton<IUserIdProvider, UserProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -86,6 +92,7 @@ namespace WebApplication1
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapHub<ChatHub>("/chatt");
             });
         }
     }

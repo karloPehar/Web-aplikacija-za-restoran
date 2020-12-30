@@ -1,0 +1,17 @@
+﻿@model ClassLibrary1.ViewModels.PorukaVM
+    
+<form  asp-action="PosaljiPoruku" asp-controller="Chat"  ajax-poziv="da" ajax-rezultat="msgbtnDiv"method="post">
+        <div class="input-group">
+            <input asp-for="Poruka" type="text" class="form-control input-sm chat_set_height" placeholder="Unesite poruku..."  />
+
+            <span class="input-group-btn">
+                <button type="submit" class="btn bt_bg btn-sm" id="btn-chat" >
+                    Pošalji
+                </button>
+              
+            </span>
+        </div>
+</form>
+
+
+

@@ -1,0 +1,79 @@
+﻿
+@using ClassLibrary1.ViewModels;
+@using ClassLibrary1.Models;
+@using WebApplication1.Helper
+
+
+
+   
+    <div class="container ">
+        <div class="chatbox__body">
+            
+            <div id="chatbox_body"></div>
+            <template id="chat_template">
+                <div class="chatbox__body__message chatbox__body__message--left">
+
+                    <div class="chatbox_timing" id="chat_time">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-calendar"></i> 22/11/2018</a></li>
+                            <li><a href="#"><i class="fa fa-clock-o"></i> 7:00 PM</a></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="ul_section_full" id="poruka_value">
+                        <ul class="ul_msg">
+                            <li><strong>Person Name</strong></li>
+                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+            </template>
+
+
+
+
+
+            
+        </div>
+        <div id="msgbtnDiv" style="border:2px solid red"></div>
+        <div id="msgContainer" style="border:1px solid grey">
+            <div class="row">
+
+                <div class="col-md-4">
+                    <p style="color: grey;"><b>ime</b></p>
+                    <br />
+                    <p>datum</p>
+                </div>
+                <div class="col-md-8">
+                    <p> test  test  test  test  test test  test test test  test test   test test  test test test test  test  test test test test test</p>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        
+
+    </div>
+<script src="~/js/jquery.min.js"></script>
+<script>
+
+    $(function () {
+
+        $.get("/Chat/SubmitFormPartial", function (data) {
+
+            $("#msgbtnDiv").html(data);
+
+        });
+
+
+    });
+</script>
+
+
+
+<!-- END section -->

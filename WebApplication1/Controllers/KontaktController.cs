@@ -46,7 +46,7 @@ namespace WebApplication1.Controllers
                     userID = null;
                 
 
-
+                
                 EmailPostavka.SendEmail(Configuration, model.Ime, model.EmailAdresa, "Restoran public mail", model.Sadrzaj);
                 TempData["poslanEmail"]="Email uspješno poslan";
 

@@ -7,6 +7,7 @@ using ClassLibrary1.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Helper;
+using WebApplication1.Hubs;
 
 namespace WebApplication1.Controllers
 {
@@ -44,6 +45,9 @@ namespace WebApplication1.Controllers
                 }
 
                 Autenfikacija.SetLogiraniKorisnik(HttpContext, u);
+
+               
+               
 
             }
 
