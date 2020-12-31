@@ -57,7 +57,7 @@ namespace WebApplication1.Controllers
                  }).ToList();
 
             //db.Dispose();
-            return PartialView("~/Views/Rezervacija/Rezervacija.cshtml", model);
+            return View("Rezervacija", model);
         }
 
 

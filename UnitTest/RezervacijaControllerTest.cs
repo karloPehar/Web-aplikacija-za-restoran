@@ -82,6 +82,16 @@ namespace UnitTest
 
 
         }
+        [TestMethod]
+        public void Index_view_not_null()
+        {
+
+            RezervacijaController pc = new RezervacijaController(db);
+            ViewResult vr = (ViewResult)pc.Index();
+            Assert.IsNotNull(vr);
+
+
+        }
 
         [TestMethod]
         public void Lista_Partial_View_Not_null()
