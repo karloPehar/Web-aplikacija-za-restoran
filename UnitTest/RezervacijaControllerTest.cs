@@ -7,66 +7,23 @@ using WebApplication1.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Helper;
+using Microsoft.Extensions.Configuration;
 
 namespace UnitTest
 {
     [TestClass]
     public class RezervacijaControllerTest
     {
-        //private mojDbContext db;
-
-        //public RezervacijaControllerTest(mojDbContext c)
-        //{
-        //    db = c;
-        //}
-        //[TestMethod]
-        //public void Rezervacija_View_Not_Null()
-        //{
-        //    RezervacijaController test = new RezervacijaController(db);
-        //    Assert.IsNotNull(test.Index());
-        //}
-
-        //[TestMethod]
-        //public void broj_Poslovnica_vece_od_0()
-        //{
-        //    RezervacijaController test = new RezervacijaController(db);
-        //    Assert.AreNotEqual(test.brojPrikazanihPoslovnica(), 0);
-        //}
-        //[TestMethod]
-        //public void broj_osoba_vece_od_0()
-        //{
-        //    RezervacijaController test = new RezervacijaController(db);
-        //    Assert.AreNotEqual(test.brojPrikazanihBrOsoba(), 0);
-        //}
-        //[TestMethod]
-        //public void broj_termina_vece_od_0()
-        //{
-        //    RezervacijaController test = new RezervacijaController(db);
-        //    Assert.AreNotEqual(test.brojPrikazanihTermina(), 0);
-        //}
-
-        //public mojDbContext InMemoryContext()
-        //{
-        //    var option = new DbContextOptionsBuilder<mojDbContext>().UseInMemoryDatabase(databaseName: "Test_Database").Options;
-
-        //    var db = new mojDbContext(option);
-        //    if (db != null)
-        //    {
-        //        db.Database.EnsureDeleted();
-        //        db.Database.EnsureCreated();
-        //    }
-
-        //    return db;
-        //}
+       
 
         private mojDbContext db;
-
+        private IConfiguration conf;
 
         public RezervacijaControllerTest()
         {
             TestniContext test = new TestniContext();
             db = test.InMemoryContext();
-
+            
 
         }
 
@@ -76,7 +33,7 @@ namespace UnitTest
         public void Lista_View_Not_null()
         {
 
-            RezervacijaController pc = new RezervacijaController(db);
+            RezervacijaController pc = new RezervacijaController(db,conf);
             ViewResult vr = (ViewResult)pc.ListaRezervacija();
             Assert.IsNotNull(vr);
 
@@ -86,9 +43,22 @@ namespace UnitTest
         public void Index_view_not_null()
         {
 
-            RezervacijaController pc = new RezervacijaController(db);
+            RezervacijaController pc = new RezervacijaController(db, conf);
             ViewResult vr = (ViewResult)pc.Index();
             Assert.IsNotNull(vr);
+
+
+
+        }
+
+        [TestMethod]
+        public void RezervacijaPartial_view_not_null()
+        {
+
+            RezervacijaController pc = new RezervacijaController(db, conf);
+            PartialViewResult vr = (PartialViewResult)pc.RezervacijaPartial(null);
+            Assert.IsNotNull(vr);
+
 
 
         }
@@ -97,7 +67,7 @@ namespace UnitTest
         public void Lista_Partial_View_Not_null()
         {
 
-            RezervacijaController pc = new RezervacijaController(db);
+            RezervacijaController pc = new RezervacijaController(db,conf);
             PartialViewResult vr = (PartialViewResult)pc.PrikazRezervacija(33);
             Assert.IsNotNull(vr);
 

@@ -1,0 +1,102 @@
+﻿
+
+@model ClassLibrary1.ViewModels.RezervacijaVM
+
+
+
+   
+
+        <h1 class="mb-4 text-center">Rezervacija</h1>
+        <form id="rezForma" asp-controller="Rezervacija" asp-action="DodajRezervacija" method="post">
+
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label asp-for="poslovnice">Odabir poslovnice</label>
+                    <select asp-for="PoslovnicaID" asp-items="Model.poslovnice" class="form-control ">
+                        <option selected disabled>Odabir poslovnice</option>
+
+                    </select>
+                    <span asp-validation-for="PoslovnicaID" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label asp-for="Ime">Ime</label>
+                    <input type="text" class="form-control" asp-for="Ime">
+                    <span asp-validation-for="Ime" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label asp-for="Prezime">Prezime</label>
+                    <input type="text" class="form-control" asp-for="Prezime">
+                    <span asp-validation-for="Prezime" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label asp-for="Email">Email</label>
+                    <input type="email" class="form-control" asp-for="Email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label asp-for="brojOsoba">Broj osoba</label>
+                    <select asp-for="brojOsobaID" asp-items="Model.brojOsoba" class="form-control">
+                        <option selected disabled>Odabir</option>
+
+                    </select>
+                    <span asp-validation-for="brojOsobaID" class="text-danger"></span>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label asp-for="BrojTelefona">Telefon</label>
+                    <input type="text" class="form-control" asp-for="BrojTelefona">
+                    <span asp-validation-for="BrojTelefona" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label asp-for="DatumRezervacije">Datum rezervacije</label>
+                    <input type="date" class="form-control" asp-for="DatumRezervacije" onkeypress="return false;">
+                    <span asp-validation-for="DatumRezervacije" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label asp-for="TerminRezervacije">Termin</label>
+                    <select asp-for="TerminRezervacijeID" asp-items="Model.TerminRezervacije" class="form-control">
+                        <option selected disabled>Termin</option>
+
+                    </select>
+                    <span asp-validation-for="TerminRezervacijeID" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <label asp-for="Napomena">Message</label>
+                    <textarea class="form-control" asp-for="Napomena" cols="30" rows="7"></textarea>
+                    <span asp-validation-for="Napomena" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 form-group">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Reserve Now" data-save="modal">
+                </div>
+            </div>
+
+        </form>
+  
+   
+<script src="~/js/jquery.min.js"></script>
+
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+
+

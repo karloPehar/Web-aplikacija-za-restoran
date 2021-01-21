@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -33,11 +34,14 @@ namespace ClassLibrary1.ViewModels
         [Required(ErrorMessage = "Polje je obavezno")]
         public string Email { get; set; }
 
-
-        [Required(ErrorMessage = "Polje je obavezno.")]
-        [MaxLength(16)]
-        [DataType(DataType.DateTime)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+       
+        [Remote(action: "ProvjeraDatuma", controller: "Rezervacija")]
+        //[Required(ErrorMessage = "Polje je obavezno.")]
+        //[MaxLength(16)]
+        //[DataType(DataType.DateTime)]
+       
+        //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        
         public string DatumRezervacije { get; set; }
 
 

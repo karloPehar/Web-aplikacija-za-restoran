@@ -7,6 +7,9 @@ using ClassLibrary1.ViewModels;
 using ClassLibrary1.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using WebApplication1.Helper;
+using System.Data.SqlClient;
+using System.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace WebApplication1.Controllers
 {
@@ -14,20 +17,31 @@ namespace WebApplication1.Controllers
     public class RezervacijaController : Controller
     {
         private mojDbContext db;
+        private IConfiguration Configuration;
 
-        public RezervacijaController(mojDbContext c)
+        public RezervacijaController(mojDbContext c, IConfiguration _config)
         {
             db = c;
+            Configuration = _config;
         }
         [Autorizacija(true,true)]
         public IActionResult Index()
         {
-           // mojDbContext db = new mojDbContext();
+           
+            return View("Rezervacija");
+        }
 
-
+        public IActionResult RezervacijaPartial(RezervacijaVM mod)
+        {
             RezervacijaVM model = new RezervacijaVM();
 
-            model.brojOsoba = db.BrojOsoba
+            if(mod!=null)
+            {
+                RezervacijaVM modeli = new RezervacijaVM();
+                modeli = mod;
+            }
+            
+                model.brojOsoba = db.BrojOsoba
                 .Select(p => new SelectListItem
                 {
                     Value = p.BrojOsobaID.ToString(),
@@ -37,37 +51,54 @@ namespace WebApplication1.Controllers
                 }).ToList();
 
 
-            model.TerminRezervacije = db.TerminRezervacije
-                .Select(p => new SelectListItem
-                {
-                    Value = p.TerminRezervacijeID.ToString(),
-                    Text = p.terminRez
+
+           
+            
+            
+           
+            model.TerminRezervacije= db.TerminRezervacije
+                     .Select(p => new SelectListItem
+                     {
+                         Value = p.TerminRezervacijeID.ToString(),
+                         Text = p.terminRez
 
 
-                }).ToList();
+                     }).ToList();
 
 
             model.poslovnice = db.Poslovnica
-                 .Select(p => new SelectListItem
-                 {
-                     Value = p.PoslovnicaID.ToString(),
-                     Text = p.Naziv + ", " + p.Adresa
+                     .Select(p => new SelectListItem
+                     {
+                         Value = p.PoslovnicaID.ToString(),
+                         Text = p.Naziv + ", " + p.Adresa
 
 
-                 }).ToList();
+                     }).ToList();
+            model.PoslovnicaID = 1;
+            
 
-            //db.Dispose();
-            return View("Rezervacija", model);
+            
+
+            return PartialView(model);
         }
+        
+        public IActionResult ProvjeraDatuma(string DatumRezervacije)
+        {
+            DateTime odabraniDatum = Convert.ToDateTime(DatumRezervacije);
+            DateTime trenutniDatum = DateTime.Now;
 
+            if (!(odabraniDatum.Date > trenutniDatum.Date && odabraniDatum.Month >= trenutniDatum.Month && odabraniDatum.Year >= trenutniDatum.Year))
+                return Json("datum mora biti minimalno za jedan dan veci od trenutnog datuma");
 
+            return Json(true);
 
+        }
         public IActionResult dodajRezervacija(RezervacijaVM x)
         {
 
             if (ModelState.IsValid)
             {
-               // mojDbContext db = new mojDbContext();
+                
 
 
 
@@ -82,8 +113,9 @@ namespace WebApplication1.Controllers
                     VrijemeZahtjeva = DateTime.Now,
                     TerminRezervacijeID = x.TerminRezervacijeID,
                     BrojOsobaID = x.brojOsobaID,
-                    Napomena = x.Napomena
-
+                    Napomena = x.Napomena,
+                    BrojTelefona = x.BrojTelefona,
+                    UserID = Autenfikacija.GetLogiraniKorisnik(HttpContext).UserID
 
 
 
@@ -91,81 +123,25 @@ namespace WebApplication1.Controllers
 
                 db.Add(nova);
                 db.SaveChanges();
-               // db.Dispose();
+              
                 TempData["uspjesnaRezervacija"] = "rezervacija uspjesno obavljena";
             }
            else
                 TempData["uspjesnaRezervacija"] = "rezervacija nije uspjesno obavljena";
 
-            //return View("~/Views/Home/index.cshtml");
+            
             return RedirectToAction("Index", "Home");
-            //return PartialView("Rezervacija");
-
-
-
-
-
-
-        }
-
-
-        public int brojPrikazanihPoslovnica()
-        {
-            int brPos = 0;
-
-            //mojDbContext db = new mojDbContext();
             
 
-            brPos = db.Poslovnica
-               .Select(p => new SelectListItem
-               {
-                   Value = p.PoslovnicaID.ToString(),
-                   Text = p.Naziv + ", " + p.Adresa
 
 
-               }).ToList().Count();
-            //db.Dispose();
-            return brPos;
+
+
+
         }
 
-        public int brojPrikazanihTermina()
-        {
-            int brTer = 0;
 
-          //  mojDbContext db = new mojDbContext();
-            
-
-            brTer = db.TerminRezervacije
-                .Select(p => new SelectListItem
-                {
-                    Value = p.TerminRezervacijeID.ToString(),
-                    Text = p.terminRez
-
-
-                }).ToList().Count();
-           // db.Dispose();
-            return brTer;
-        }
-
-        public int brojPrikazanihBrOsoba()
-        {
-            int brOsoba = 0;
-
-           // mojDbContext db = new mojDbContext();
-
-
-            brOsoba = db.BrojOsoba
-                .Select(p => new SelectListItem
-                {
-                    Value = p.BrojOsobaID.ToString(),
-                    Text = p.brOsoba.ToString()
-
-
-                }).ToList().Count();
-            //db.Dispose();
-            return brOsoba;
-        }
-
+       
 
         public IActionResult ListaRezervacija()
         {
