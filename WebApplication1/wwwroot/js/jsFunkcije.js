@@ -33,18 +33,42 @@ function DodajAjaxEvente() {
 
                 });
             });
+            //$("form[ajax-poziv='da']").submit(function (event) {
+            //    $(this).attr("ajax-poziv", "dodan");
+            //    console.log("pozvan ajax");
+            //    event.preventDefault();
+            //    var urlZaPoziv = $(this).attr("action");
+            //    var divZaRezultat = $(this).attr("ajax-rezultat");
+
+            //    console.log(urlZaPoziv);
+            //    $.get(urlZaPoziv, function (data, status) {
+            //        $("#" + divZaRezultat).html(data);
+
+
+            //    });
+            //});
             $("form[ajax-poziv='da']").submit(function (event) {
                 $(this).attr("ajax-poziv", "dodan");
-
                 event.preventDefault();
-                var urlZaPoziv = $(this).attr("action");
+                var urlZaPoziv1 = $(this).attr("ajax-url");
+                var urlZaPoziv2 = $(this).attr("action");
                 var divZaRezultat = $(this).attr("ajax-rezultat");
 
+                var urlZaPoziv;
+                if (urlZaPoziv1 instanceof String)
+                    urlZaPoziv = urlZaPoziv1;
+                else
+                    urlZaPoziv = urlZaPoziv2;
 
-                $.get(urlZaPoziv, function (data, status) {
-                    $("#" + divZaRezultat).html(data);
+                var form = $(this);
 
-
+                $.ajax({
+                    type: "POST",
+                    url: urlZaPoziv,
+                    data: form.serialize(),
+                    success: function (data) {
+                        $("#" + divZaRezultat).html(data);
+                    }
                 });
             });
 

@@ -4,63 +4,75 @@
 @using WebApplication1.Helper
 
 
+@model ClassLibrary1.ViewModels.PorukaVM
 
-   
-    <div class="container ">
-        <div class="chatbox__body">
-            
-            <div id="chatbox_body"></div>
-            <template id="chat_template">
-                <div class="chatbox__body__message chatbox__body__message--left">
+<div class="container ">
+    <div class="chatbox__body">
 
-                    <div class="chatbox_timing" id="chat_time">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-calendar"></i> 22/11/2018</a></li>
-                            <li><a href="#"><i class="fa fa-clock-o"></i> 7:00 PM</a></a></li>
-                        </ul>
-                    </div>
+        <div id="chatbox_body"></div>
+        <template id="chat_template">
+            <div class="chatbox__body__message chatbox__body__message--left">
 
-                    <div class="clearfix"></div>
-                    <div class="ul_section_full" id="poruka_value">
-                        <ul class="ul_msg">
-                            <li><strong>Person Name</strong></li>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
-                        </ul>
+                <div class="chatbox_timing" id="chat_time">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-calendar"></i> 22/11/2018</a></li>
+                        <li><a href="#"><i class="fa fa-clock-o"></i> 7:00 PM</a></a></li>
+                    </ul>
+                </div>
 
-                    </div>
+                <div class="clearfix"></div>
+                <div class="ul_section_full" id="poruka_value">
+                    <ul class="ul_msg">
+                        <li><strong>Person Name</strong></li>
+                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </li>
+                    </ul>
 
                 </div>
-            </template>
 
-
-
-
-
-            
-        </div>
-        <div id="msgbtnDiv" style="border:2px solid red"></div>
-        <div id="msgContainer" style="border:1px solid grey">
-            <div class="row">
-
-                <div class="col-md-4">
-                    <p style="color: grey;"><b>ime</b></p>
-                    <br />
-                    <p>datum</p>
-                </div>
-                <div class="col-md-8">
-                    <p> test  test  test  test  test test  test test test  test test   test test  test test test test  test  test test test test test</p>
-                </div>
             </div>
+        </template>
 
 
-        </div>
+
+
+
+
+    </div>
+    <div id="msgbtnDiv" style="border:2px solid red">
 
 
         
+    </div>
+    <div id="msgContainer" style="border:1px solid grey">
+        <div class="row">
+
+            <div class="col-md-4">
+                <p style="color: grey;"><b>ime</b></p>
+                <br />
+                <p>datum</p>
+            </div>
+            <div class="col-md-8">
+                <p> test  test  test  test  test test  test test test  test test   test test  test test test test  test  test test test test test</p>
+            </div>
+        </div>
+
 
     </div>
+
+
+
+
+</div>
+
 <script src="~/js/jquery.min.js"></script>
+<script src="~/SignalR/dist/browser/signalr.min.js"></script>
 <script>
+
+    //var connection = new signalR.HubConnectionBuilder()
+    //    .withUrl("/chatt", {
+    //        accessTokenFactory: () => "testing"
+    //    })
+    //    .build();
 
     $(function () {
 
@@ -68,11 +80,96 @@
 
             $("#msgbtnDiv").html(data);
 
+
         });
+        //$("#forma").submit(function () {
+        //    $("#forma")[0].reset();
+        //});
+
+    });
+
+    var connection = new signalR.HubConnectionBuilder()
+        .withUrl("/chatt", {
+            accessTokenFactory: () => "testing"
+        })
+        .build();
+
+
+    connection.on("PrimljenaPoruka", function (poruka,datum,vrijeme,user) {
+
+        console.log(poruka+"; "+datum+"; "+vrijeme+"; "+user);
+
+
+
+        //var datumVrijeme = new Date();
+        //var dd = String(datumVrijeme.getDate()).padStart(2, '0');
+        //var mm = String(datumVrijeme.getMonth() + 1).padStart(2, '0'); //January is 0!
+        //var yyyy = datumVrijeme.getFullYear();
+
+        //var h = datumVrijeme.getHours();
+        //var min = datumVrijeme.getMinutes();
+
+        //var datum = mm + '/' + dd + '/' + yyyy;
+        //var vrijeme = h + ':' + min;
+
+        //var temp = document.getElementById("chat_template");
+        //var vrijemeUl = temp.content.getElementById("chat_time").getElementsByTagName("UL")[0];
+        //vrijemeUl.getElementsByTagName("LI")[0].innerHTML = datum;
+        //vrijemeUl.getElementsByTagName("LI")[1].innerHTML = vrijeme;
+
+
+
+        //var porukaUl = temp.content.getElementById("poruka_value").getElementsByTagName("UL")[0];
+        //porukaUl.getElementsByTagName("LI")[0].innerHTML = "user";
+        //porukaUl.getElementsByTagName("LI")[1].innerHTML = poruka;
+        //var clon = temp.content.cloneNode(true);
+        //document.getElementById("chatbox_body").appendChild(clon);
+
+
 
 
     });
+
+    //connection.onclose().then(function () {
+    //connection.invoke('GetConnectionId')
+    //.then(function (connectionId) {
+    //   //alert(connectionId);
+    //   removeConnectionID(connectionId);
+    //})
+
+    //}).catch(err => console.error(err));
+
+    connection.on("diss", function (connectionId) {
+
+
+        //console.log(connectionId);
+    });
+
+    connection.on("ping", function (conID,connectionId) {
+
+        
+          console.log(conID+ " pingan");
+        connection.invoke("povratniPing",conID, connectionId);
+      
+    });
+
+
+    connection.start().then(function () {
+        connection.invoke('GetConnectionId')
+            .then(function (connectionId) {
+                // alert(connectionId);
+
+            })
+
+    }).catch(err => console.error(err));
+
+
+
+
+
+
 </script>
+
 
 
 

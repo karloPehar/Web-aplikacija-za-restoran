@@ -4,14 +4,16 @@ using ClassLibrary1.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ClassLibrary1.Migrations
 {
     [DbContext(typeof(mojDbContext))]
-    partial class mojDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210129000907_Konekcija")]
+    partial class Konekcija
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,13 +36,19 @@ namespace ClassLibrary1.Migrations
 
             modelBuilder.Entity("ClassLibrary1.Models.Chat", b =>
                 {
-                    b.Property<int>("ChatID");
+                    b.Property<int>("ChatID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("KorisnickaSluzbaID");
 
                     b.Property<int>("KorisnikID");
 
                     b.Property<DateTime>("VrijemePocetka");
 
                     b.HasKey("ChatID");
+
+                    b.HasIndex("KorisnickaSluzbaID");
 
                     b.HasIndex("KorisnikID");
 
@@ -433,6 +441,11 @@ namespace ClassLibrary1.Migrations
 
             modelBuilder.Entity("ClassLibrary1.Models.Chat", b =>
                 {
+                    b.HasOne("ClassLibrary1.Models.User", "KorisnickaSluzba")
+                        .WithMany()
+                        .HasForeignKey("KorisnickaSluzbaID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
                     b.HasOne("ClassLibrary1.Models.User", "Korisnik")
                         .WithMany()
                         .HasForeignKey("KorisnikID")

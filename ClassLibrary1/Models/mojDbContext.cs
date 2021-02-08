@@ -67,6 +67,7 @@ namespace ClassLibrary1.Models
 
         public DbSet<Poruka> Poruka { get; set; }
 
+        public DbSet<Konekcija> Konekcija { get; set; }
 
         public mojDbContext(DbContextOptions<mojDbContext> options)
             : base(options)

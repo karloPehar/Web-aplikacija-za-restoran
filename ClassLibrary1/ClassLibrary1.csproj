@@ -23,6 +23,8 @@
     <Compile Remove="Migrations\20200907192803_rezervacija-klase.Designer.cs" />
     <Compile Remove="Migrations\20201002140009_dodavanje_komentar_klase.cs" />
     <Compile Remove="Migrations\20201002140009_dodavanje_komentar_klase.Designer.cs" />
+    <Compile Remove="Migrations\20210205003323_Chat_Update.cs" />
+    <Compile Remove="Migrations\20210205003323_Chat_Update.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -4,14 +4,16 @@ using ClassLibrary1.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ClassLibrary1.Migrations
 {
     [DbContext(typeof(mojDbContext))]
-    partial class mojDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210205004325_Chat_Poruka_del")]
+    partial class Chat_Poruka_del
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,21 +32,6 @@ namespace ClassLibrary1.Migrations
                     b.HasKey("BrojOsobaID");
 
                     b.ToTable("BrojOsoba");
-                });
-
-            modelBuilder.Entity("ClassLibrary1.Models.Chat", b =>
-                {
-                    b.Property<int>("ChatID");
-
-                    b.Property<int>("KorisnikID");
-
-                    b.Property<DateTime>("VrijemePocetka");
-
-                    b.HasKey("ChatID");
-
-                    b.HasIndex("KorisnikID");
-
-                    b.ToTable("Chat");
                 });
 
             modelBuilder.Entity("ClassLibrary1.Models.Email", b =>
@@ -163,31 +150,6 @@ namespace ClassLibrary1.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("Obavijest");
-                });
-
-            modelBuilder.Entity("ClassLibrary1.Models.Poruka", b =>
-                {
-                    b.Property<int>("PorukaID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("ChatID");
-
-                    b.Property<int>("PosijateljID");
-
-                    b.Property<int?>("PosiljateljUserID");
-
-                    b.Property<string>("Sadrzaj");
-
-                    b.Property<DateTime>("VrijemeSlanja");
-
-                    b.HasKey("PorukaID");
-
-                    b.HasIndex("ChatID");
-
-                    b.HasIndex("PosiljateljUserID");
-
-                    b.ToTable("Poruka");
                 });
 
             modelBuilder.Entity("ClassLibrary1.Models.Poslovnica", b =>
@@ -431,14 +393,6 @@ namespace ClassLibrary1.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("ClassLibrary1.Models.Chat", b =>
-                {
-                    b.HasOne("ClassLibrary1.Models.User", "Korisnik")
-                        .WithMany()
-                        .HasForeignKey("KorisnikID")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("ClassLibrary1.Models.Email", b =>
                 {
                     b.HasOne("ClassLibrary1.Models.User", "User")
@@ -471,18 +425,6 @@ namespace ClassLibrary1.Migrations
                     b.HasOne("ClassLibrary1.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserID");
-                });
-
-            modelBuilder.Entity("ClassLibrary1.Models.Poruka", b =>
-                {
-                    b.HasOne("ClassLibrary1.Models.Chat", "Chat")
-                        .WithMany()
-                        .HasForeignKey("ChatID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ClassLibrary1.Models.User", "Posiljatelj")
-                        .WithMany()
-                        .HasForeignKey("PosiljateljUserID");
                 });
 
             modelBuilder.Entity("ClassLibrary1.Models.Poslovnica", b =>
