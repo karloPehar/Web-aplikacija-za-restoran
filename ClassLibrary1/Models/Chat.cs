@@ -12,9 +12,9 @@ namespace ClassLibrary1.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ChatID { get; set; }
 
-        public User Korisnik { get; set; }
+        public User User { get; set; }
 
-        public int KorisnikID { get; set; }
+        public int UserID { get; set; }
 
 
 

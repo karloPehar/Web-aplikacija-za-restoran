@@ -1,13 +1,51 @@
 ﻿@model ClassLibrary1.ViewModels.PorukaVM
-   
-    
-    
-    <form asp-controller="Chat" asp-action="PosaljiPoruku" ajax-poziv="da" ajax-rezultat="msgbtnDiv" >
 
-        <input type="text" asp-for="Poruka" />
+@{
 
-        <input type="submit"  value="Posalji" />
+    var brOsoblja = TempData["brAktivnihDjelatnika"];
 
 
-    </form>
-    
+}
+
+
+@{ if (brOsoblja != null)
+    {
+        <div class="alert alert-light text-center" role="alert">
+            Ispričavamo se na neugodnosti! Korisnička podrška trenutno nije dostupna. Javite nam se na <a href="Kontakt/Email" class="alert-link">mail</a>
+            kako bi stupili u kontakt u što bržem roku.
+        </div>
+
+
+
+    }
+    else
+    {
+
+        <form asp-action="PosaljiPoruku" ajax-poziv="da" ajax-rezultat="msgbtnDiv">
+            <div class="input-group">
+                <input type="text" class="form-control input-sm chat_set_height" asp-for="Poruka" />
+
+                <span class="input-group-btn">
+                    <button type="submit" class="btn bt_bg btn-lg">
+                        Pošalji
+                    </button>
+
+
+                </span>
+                <span asp-validation-for="Poruka" class="text-danger"></span>
+            </div>
+        </form>
+
+
+
+    }
+
+
+}
+
+
+
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+

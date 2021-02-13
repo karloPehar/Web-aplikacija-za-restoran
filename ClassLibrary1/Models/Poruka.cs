@@ -16,7 +16,7 @@ namespace ClassLibrary1.Models
 
         public int ChatID { get; set; }
 
-        public User Posiljatelj { get; set; }
-        public int PosijateljID { get; set; }
+        public User User { get; set; }
+        public int UserID { get; set; }
     }
 }

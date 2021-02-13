@@ -33,20 +33,7 @@ function DodajAjaxEvente() {
 
                 });
             });
-            //$("form[ajax-poziv='da']").submit(function (event) {
-            //    $(this).attr("ajax-poziv", "dodan");
-            //    console.log("pozvan ajax");
-            //    event.preventDefault();
-            //    var urlZaPoziv = $(this).attr("action");
-            //    var divZaRezultat = $(this).attr("ajax-rezultat");
-
-            //    console.log(urlZaPoziv);
-            //    $.get(urlZaPoziv, function (data, status) {
-            //        $("#" + divZaRezultat).html(data);
-
-
-            //    });
-            //});
+           
             $("form[ajax-poziv='da']").submit(function (event) {
                 $(this).attr("ajax-poziv", "dodan");
                 event.preventDefault();

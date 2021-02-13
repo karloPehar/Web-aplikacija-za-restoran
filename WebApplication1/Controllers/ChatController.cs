@@ -28,62 +28,104 @@ namespace WebApplication1.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+
+            ListaPorukaVM model = new ListaPorukaVM();
+            var user = Autenfikacija.GetLogiraniKorisnik(HttpContext);
+            if (user.UlogaID == 2)
+            {
+              
+                model.ListaPoruka = db.Poruka
+              .Select(r => new ListaPorukaVM.Row
+              {
+
+                  Sadrzaj = r.Sadrzaj,
+                  User = r.User.ime,
+                  VrijemePoruke = r.VrijemeSlanja.ToShortTimeString(),
+                  DatumPoruke = r.VrijemeSlanja.ToShortDateString(),
+                  VrijemeDatumPoruka = r.VrijemeSlanja,
+                  ChatID= r.Chat.ChatID
+              }).Where((n => n.VrijemeDatumPoruka >= (DateTime.Now.AddDays(-1)))).Where((e => e.ChatID == user.UserID)).ToList();
+
+
+               
+
+            }
+
+
+            return View(model);
+
+
         }
 
         public IActionResult SubmitFormPartial()
         {
-          
+            var user = Autenfikacija.GetLogiraniKorisnik(HttpContext);
+
+            if(user.UlogaID==2)
+            {
+                var brAktivnihDjelatnika = db.Konekcija.Where(k => k.User.UlogaID == 1).Select(k => k.Vrijednost).Count();
+
+                if (brAktivnihDjelatnika == 0)
+                    TempData["brAktivnihDjelatnika"] = "Trenutno korisnička podrška nije na mreži";
+            }
+            
             return PartialView();
         }
 
         public IActionResult PosaljiPoruku(PorukaVM model)
         {
 
-
-            var userID = Autenfikacija.GetLogiraniKorisnik(HttpContext).UserID;
-            var user = Autenfikacija.GetLogiraniKorisnik(HttpContext);
-            if (user.UlogaID == 2)
+            if (ModelState.IsValid)
             {
-                if (db.Chat.Find(userID) == null)
+                var userID = Autenfikacija.GetLogiraniKorisnik(HttpContext).UserID;
+                var user = Autenfikacija.GetLogiraniKorisnik(HttpContext);
+                if (user.UlogaID == 2)
                 {
-                    Chat ch = new Chat
+                    if (db.Chat.Find(userID) == null)
                     {
-                        KorisnikID = userID,
+                        Chat ch = new Chat
+                        {
+                            UserID = userID,
+                            ChatID = userID,
+                            VrijemePocetka = System.DateTime.Now
+                        };
+                        db.Chat.Add(ch);
+                        db.SaveChanges();
+                    }
+
+                    Poruka nova = new Poruka
+                    {
+
+                        VrijemeSlanja = System.DateTime.Now,
+
+                        UserID = userID,
                         ChatID = userID,
-                        VrijemePocetka = System.DateTime.Now
+                        Sadrzaj = model.Poruka
+
+
+
                     };
-                    db.Chat.Add(ch);
+                    db.Poruka.Add(nova);
                     db.SaveChanges();
+
+
                 }
 
-                Poruka nova = new Poruka
-                {
-
-                    VrijemeSlanja = System.DateTime.Now,
-
-                    PosijateljID = userID,
-                    ChatID = userID,
-                    Sadrzaj = model.Poruka
 
 
 
-                };
-                db.Poruka.Add(nova);
-                db.SaveChanges();
 
+
+
+                var datum = System.DateTime.Now.ToShortDateString();
+                var vrijeme = System.DateTime.Now.ToShortTimeString();
+
+                _hubContext.Clients.Group(userID.ToString()).SendAsync("PrimljenaPoruka", model.Poruka, datum, vrijeme, user.ime);
+
+
+                ModelState.Clear();
             }
-
-
-
-
-
-
-
-            var datum = System.DateTime.Now.ToShortDateString();
-            var vrijeme = System.DateTime.Now.ToShortTimeString();
-
-            _hubContext.Clients.Group(userID.ToString()).SendAsync("PrimljenaPoruka",model.Poruka,datum,vrijeme, userID);
+           
             return PartialView("SubmitFormPartial");
             
         }

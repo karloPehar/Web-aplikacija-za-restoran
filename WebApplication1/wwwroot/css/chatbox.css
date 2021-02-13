@@ -119,9 +119,10 @@
 .chatbox__credentials {
     padding: 15px;
     border-top: 0;
-    background-color: #DCDCDC;
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
+    
+    background-color: #fff;
+    /*border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;*/
     -webkit-flex-grow: 1;
     flex-grow: 1;
 }
@@ -129,7 +130,7 @@
 .chatbox__credentials {
     display: none;
 }
-
+ 
     .chatbox__credentials .form-control {
         -webkit-box-shadow: none;
         box-shadow: none;
