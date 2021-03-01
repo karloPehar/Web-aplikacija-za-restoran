@@ -30,10 +30,7 @@ namespace WebApplication1.Controllers
 
             if (ModelState.IsValid)
             {
-               // mojDbContext db = new mojDbContext();
-
-
-                //Nalog x = db.Nalog.SingleOrDefault(n => n.Email == model.Email && n.Lozinka == model.Lozinka);
+               
                 User u = db.User.SingleOrDefault(k => k.Nalog.Email == model.Email && k.Nalog.Lozinka == model.Lozinka);
 
                 if (u == null)

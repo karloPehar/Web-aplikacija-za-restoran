@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using WebApplication1.Controllers;
+using WebApplication1.Helper;
 
 namespace UnitTest
 {
@@ -12,9 +13,11 @@ namespace UnitTest
     {
         private mojDbContext db;
 
-        public KomentarControllerTest(mojDbContext c)
+
+        public KomentarControllerTest()
         {
-            db = c;
+            TestniContext test = new TestniContext();
+            db = test.InMemoryContext();
         }
         [TestMethod]
         public void Komentari_View_Not_Null()

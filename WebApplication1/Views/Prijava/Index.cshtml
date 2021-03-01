@@ -1,7 +1,6 @@
-﻿
-<!-- Modal -->
+﻿<!-- Modal -->
 @{
-   var neuspjesnaPrijava = TempData["neuspjesnaPrijava"];
+    var neuspjesnaPrijava = TempData["neuspjesnaPrijava"];
 
     @model ClassLibrary1.ViewModels.PrijavaVM
 
@@ -16,20 +15,21 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form asp-action="Prijava">
+                <form asp-action="Prijava" id="formPr">
                     <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
                     <input name="PogresanUnos" type="hidden" value="@neuspjesnaPrijava" />
                     <div class="form-group">
                         <label asp-for="Email"></label>
                         <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email" class="text-danger"></span>
+                        <span asp-validation-for="Email"></span>
+
                     </div>
                     <div class="form-group">
                         <label asp-for="Lozinka"></label>
                         <input asp-for="Lozinka" type="password" class="form-control" />
-                        <span asp-validation-for="Lozinka" class="text-danger"></span>
+                        <span asp-validation-for="Lozinka"></span>
                     </div>
-                   
+
                     <div class="form-group">
                         @if (neuspjesnaPrijava != null)
                         {
@@ -43,8 +43,13 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-save="modal">Save</button>
+                <button type="button" class="btn btn-primary" data-save="modal" >Save</button>
             </div>
         </div>
     </div>
 </div>
+@*<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+
+<script src="~/js/Validacija/login.js"></script>*@
+

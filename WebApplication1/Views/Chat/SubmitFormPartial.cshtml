@@ -21,7 +21,7 @@
     else
     {
 
-        <form asp-action="PosaljiPoruku" ajax-poziv="da" ajax-rezultat="msgbtnDiv">
+        <form id="porukaForma" asp-action="PosaljiPoruku" ajax-poziv="da" forma-id="porukaForma" ajax-rezultat="msgbtnDiv" >
             <div class="input-group">
                 <input type="text" class="form-control input-sm chat_set_height" asp-for="Poruka" />
 
@@ -32,7 +32,8 @@
 
 
                 </span>
-                <span asp-validation-for="Poruka" class="text-danger"></span>
+
+
             </div>
         </form>
 
@@ -43,9 +44,60 @@
 
 }
 
+<script src="~/js/Validacija/poruka.js"></script>
+@*<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+<script>
+    var forma = $("#porukaForma");
+
+    forma.submit(function (event) {
+
+        event.preventDefault();
+
+        if (!forma.valid()) {
+            console.log("nije validna");
+            return false;
+         }
+
+    });
+    
+
+</script>*@
+
+@*<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>*@
 
 
 
-<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
-<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+@*<script>
 
+    $(function () {
+
+
+        
+        $("#porukaForma").validate(
+            {
+                rules: {
+
+
+
+                    Poruka: {
+
+                        required: true,
+                        maxlength: 256,
+                        minlength: 3
+                    }
+                },
+                messages: {
+
+
+                    Poruka: {
+                        required: "Unos je obavezan.",
+                        maxlength: "Unjeli ste maximalan broj karaktera.",
+                        minlength: "Morate unjeti minimalno 3 karaktera. "
+                    }
+
+                }
+            });
+    });
+    
+
+</script>*@

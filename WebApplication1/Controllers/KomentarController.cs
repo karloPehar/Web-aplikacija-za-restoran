@@ -60,7 +60,7 @@ namespace WebApplication1.Controllers
                 {
                     Sadrzaj = model.Sadrzaj,
                     VrijemePostavljanja = DateTime.Now,
-                    UserID = 2
+                    UserID = Autenfikacija.GetLogiraniKorisnik(HttpContext).UserID
 
 
 
