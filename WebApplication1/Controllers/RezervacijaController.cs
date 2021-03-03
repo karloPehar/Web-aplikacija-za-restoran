@@ -30,7 +30,7 @@ namespace WebApplication1.Controllers
            
             return View("Rezervacija");
         }
-
+        [Autorizacija(true, true)]
         public IActionResult RezervacijaPartial(RezervacijaVM mod)
         {
             RezervacijaVM model = new RezervacijaVM();
@@ -88,11 +88,12 @@ namespace WebApplication1.Controllers
             DateTime trenutniDatum = DateTime.Now;
 
             if (!(odabraniDatum.Date > trenutniDatum.Date && odabraniDatum.Month >= trenutniDatum.Month && odabraniDatum.Year >= trenutniDatum.Year))
-                return Json("datum mora biti minimalno za jedan dan veci od trenutnog datuma");
+                return Json(false/*"datum mora biti minimalno za jedan dan veci od trenutnog datuma"*/);
 
             return Json(true);
 
         }
+        [ValidateAntiForgeryToken]
         public IActionResult dodajRezervacija(RezervacijaVM x)
         {
 

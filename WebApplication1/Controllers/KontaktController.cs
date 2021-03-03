@@ -31,7 +31,7 @@ namespace WebApplication1.Controllers
         {
             return View();
         }
-
+       
         public IActionResult SlanjeMaila(EmailVM model)
         {
             

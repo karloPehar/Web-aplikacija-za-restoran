@@ -47,7 +47,7 @@ namespace WebApplication1.Controllers
 
             return PartialView();
         }
-
+       
         public IActionResult Snimi(KomentarVM model)
         {
             //testiranje rada kontrolera

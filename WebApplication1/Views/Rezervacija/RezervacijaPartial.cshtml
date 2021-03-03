@@ -8,7 +8,7 @@
 
         <h1 class="mb-4 text-center">Rezervacija</h1>
         <form id="rezForma" asp-controller="Rezervacija" asp-action="DodajRezervacija" method="post">
-
+           @Html.AntiForgeryToken()
             <div class="row">
                 <div class="col-md-12 form-group">
                     <label asp-for="poslovnice">Odabir poslovnice</label>
@@ -83,19 +83,19 @@
 
             <div class="row">
                 <div class="col-md-12 form-group">
-                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Reserve Now" data-save="modal">
+                    <input type="submit" class="btn btn-primary btn-lg btn-block" value="Rezerviraj" data-save="modal">
                 </div>
             </div>
 
         </form>
   
    
-<script src="~/js/jquery.js"></script>
-
-
-
 
 <script src="~/js/Validacija/rezervacija.js"></script>
+
+
+
+
 
 
 

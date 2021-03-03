@@ -36,24 +36,7 @@ namespace UnitTest
 
 
         }
-        //[TestMethod]
-        //public void Slanje_Maila_View_Not_null()
-        //{
-        //    EmailVM model = new EmailVM
-        //    {
-                
-        //        EmailAdresa = null,
-        //        Ime = null,
-        //        Sadrzaj = null,
-
-        //    };
-
-        //    KontaktController pc = new KontaktController(db, conf);
-        //    ActionResult ar = (ActionResult)pc.SlanjeMaila(model);
-        //    Assert.IsNotNull(ar);
-
-
-        //}
+       
 
     }
 }

@@ -40,7 +40,8 @@ $(function () {
 
                 },
                 DatumRezervacije: {
-                    required: true
+                    required: true,
+                    remote:"Rezervacija/ProvjeraDatuma"
 
                 },
                 TerminRezervacijeID: {
@@ -48,7 +49,7 @@ $(function () {
 
                 },
                 Napomena: {
-
+                   
                     maxlength: 256,
                     minlength: 10
                 }
@@ -67,7 +68,7 @@ $(function () {
                 Prezime: {
                     required: "Polje je obavezno.",
                     maxlength: "Unjeli ste maksimalnu duzinu prezimena",
-                    minlength: "Ime se mora sastojati on minimalno 3 karaktera"
+                    minlength: "Prezime se mora sastojati on minimalno 3 karaktera"
                 },
                 Email: {
                     required: "Polje je obavezno.",
@@ -84,7 +85,8 @@ $(function () {
 
                 },
                 DatumRezervacije: {
-                    required: "Polje je obavezno"
+                    required: "Polje je obavezno",
+                    remote:"datum mora biti minimalno za jedan dan veci od trenutnog datuma"
 
                 },
                 TerminRezervacijeID: {

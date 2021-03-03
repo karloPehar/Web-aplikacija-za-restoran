@@ -34,18 +34,13 @@ namespace ClassLibrary1.ViewModels
         [Required(ErrorMessage = "Polje je obavezno")]
         public string Email { get; set; }
 
-       
-        [Remote(action: "ProvjeraDatuma", controller: "Rezervacija")]
-        //[Required(ErrorMessage = "Polje je obavezno.")]
-        //[MaxLength(16)]
-        //[DataType(DataType.DateTime)]
-       
-        //[DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        
+
+
+        [Required(ErrorMessage = "Polje je obavezno")]
         public string DatumRezervacije { get; set; }
 
 
-        [Required(ErrorMessage = "Polje je obavezno.")]
+        
         [MaxLength(512)]
         public string Napomena { get; set; }
 

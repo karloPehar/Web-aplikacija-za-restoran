@@ -26,6 +26,7 @@ namespace WebApplication1.Controllers
             _hubContext = hubContext;
             
         }
+        [Autorizacija(true, true)]
         public IActionResult Index()
         {
 

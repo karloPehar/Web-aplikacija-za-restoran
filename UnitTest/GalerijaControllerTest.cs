@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using WebApplication1.Controllers;
+using WebApplication1.Helper;
 
 namespace UnitTest
 {
@@ -14,11 +15,15 @@ namespace UnitTest
     {
         private mojDbContext db;
 
-        public GalerijaControllerTest(mojDbContext c)
+        public GalerijaControllerTest()
         {
-           
-            db = c;
+
+            TestniContext test = new TestniContext();
+            db = test.InMemoryContext();
         }
+
+       
+
 
         [TestMethod]
         public void Slike_View_Not_Null()
@@ -31,7 +36,7 @@ namespace UnitTest
         public void Obavijesti_View_Broj_Razlicit_Od_0()
         {
             ObavijestController test = new ObavijestController(db);
-            Assert.AreNotEqual(0, new ObavijestController(db).brojacObavijesti());
+            Assert.AreEqual(0, new ObavijestController(db).brojacObavijesti());
 
         }
     }

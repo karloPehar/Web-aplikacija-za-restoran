@@ -27,7 +27,7 @@ $(function () {
                 Sadrzaj: {
                     required:true,
                     maxlength: 256,
-                    minlength: 10
+                    minlength: 15
                 }
             },
             messages: {
