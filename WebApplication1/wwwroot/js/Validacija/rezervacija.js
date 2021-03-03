@@ -36,7 +36,8 @@ $(function () {
                 },
                 BrojTelefona: {
                     required: true,
-                    validanTelefon: true
+                    validanTelefon: true,
+                    maxlength: 9
 
                 },
                 DatumRezervacije: {
@@ -63,12 +64,12 @@ $(function () {
                 Ime: {
                     required: "Polje je obavezno.",
                     maxlength: "Unjeli ste maksimalnu duzinu imena",
-                    minlength: "Ime se mora sastojati on minimalno 3 karaktera"
+                    minlength: "Ime se mora sastojati on minimalno 2 karaktera"
                 },
                 Prezime: {
                     required: "Polje je obavezno.",
                     maxlength: "Unjeli ste maksimalnu duzinu prezimena",
-                    minlength: "Prezime se mora sastojati on minimalno 3 karaktera"
+                    minlength: "Prezime se mora sastojati on minimalno 2 karaktera"
                 },
                 Email: {
                     required: "Polje je obavezno.",
@@ -77,10 +78,11 @@ $(function () {
                 },
                 brojOsobaID: {
                     required: "Polje je obavezno."
-
+                    
                 },
                 BrojTelefona: {
-                    required: "Polje je obavezno."
+                    required: "Polje je obavezno.",
+                    maxlength: "Molimo unesite validan broj telefona."
 
 
                 },

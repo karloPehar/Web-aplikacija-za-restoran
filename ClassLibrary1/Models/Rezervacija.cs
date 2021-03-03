@@ -14,6 +14,7 @@ namespace ClassLibrary1.Models
         [MaxLength(64)]
         public string Prezime { get; set; }
         [MaxLength(64)]
+        [Required ]
         public string BrojTelefona { get; set; }
         [MaxLength(128)]
         [Required]
