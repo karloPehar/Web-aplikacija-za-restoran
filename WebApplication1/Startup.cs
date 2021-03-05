@@ -45,7 +45,8 @@ namespace WebApplication1
             {
 
                 var optionsBuilder = new DbContextOptionsBuilder<mojDbContext>();
-                optionsBuilder.UseSqlServer(@"Server=.;Database=restoranTemp;Trusted_Connection=true;MultipleActiveResultSets=true;User ID=sa;Password=test;");
+                //optionsBuilder.UseSqlServer(@"Server=.;Database=restoranTemp;Trusted_Connection=true;MultipleActiveResultSets=true;User ID=sa;Password=test;");
+                optionsBuilder.UseSqlServer(@"Server=tcp:restoranrs.database.windows.net,1433;Initial Catalog=restoran;Persist Security Info=False;User ID=testniUser;Password=testTest123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
                 return new mojDbContext(optionsBuilder.Options);
             }
